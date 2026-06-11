@@ -385,13 +385,97 @@ a { color: inherit; text-decoration: none; }
   background: radial-gradient(60% 60% at 50% 40%, rgba(91, 140, 255, 0.35), transparent 70%);
   filter: blur(20px);
 }
-.feature__media img {
+.feature__media .screen { max-width: 300px; }
+
+/* Real app screenshots, presented as a phone screen */
+.screen {
+  display: block;
   width: 100%;
-  max-width: 460px;
-  border-radius: 24px;
-  border: 1px solid var(--line);
-  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.85);
 }
+
+/* --------------------- CarAI Vision (paso a paso) --------------------- */
+.vision {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(60px, 11vh, 130px) clamp(20px, 6vw, 80px);
+}
+.vision__head { max-width: 720px; margin: 0 auto clamp(40px, 7vh, 70px); text-align: center; }
+.vision__head h2 { font-size: clamp(30px, 5vw, 54px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-top: 8px; }
+.vision__head p { margin-top: 16px; color: var(--ink-soft); font-size: clamp(16px, 2vw, 19px); line-height: 1.55; }
+.vsteps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(30px, 4vw, 48px) clamp(24px, 3vw, 40px);
+}
+.vstep { text-align: center; }
+.vstep__media {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 244px;
+  margin-bottom: 22px;
+}
+.vstep__media::before {
+  content: "";
+  position: absolute;
+  inset: 4% 12% 2%;
+  z-index: -1;
+  background: radial-gradient(58% 55% at 50% 45%, rgba(78, 224, 192, 0.26), transparent 70%);
+  filter: blur(24px);
+}
+.vstep__n {
+  position: absolute;
+  top: -16px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 40px; height: 40px;
+  display: grid; place-content: center;
+  border-radius: 13px;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 15px;
+  color: #03110d;
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  box-shadow: 0 10px 24px -8px rgba(78, 224, 192, 0.75);
+}
+.vstep h3 { font-size: 21px; font-weight: 700; }
+.vstep p { margin: 8px auto 0; color: var(--ink-soft); font-size: 15px; line-height: 1.5; max-width: 300px; }
+
+/* --------------------- Garage Card + Dossier --------------------- */
+.showcase {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(10px, 2vh, 30px) clamp(20px, 6vw, 80px) clamp(60px, 10vh, 110px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 60px);
+}
+.showcase__item { display: flex; align-items: center; gap: clamp(20px, 3vw, 34px); }
+.showcase__media { flex: 0 0 auto; position: relative; display: flex; }
+.showcase__media::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  z-index: -1;
+  background: radial-gradient(60% 60% at 50% 45%, rgba(91, 140, 255, 0.3), transparent 70%);
+  filter: blur(22px);
+}
+.showcase__media .screen { max-width: 178px; }
+.showcase__media .doc {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.85);
+}
+.showcase__text h3 { font-size: clamp(22px, 3vw, 30px); font-weight: 700; margin-top: 6px; line-height: 1.1; }
+.showcase__text p { margin-top: 12px; color: var(--ink-soft); font-size: 16px; line-height: 1.55; }
+.showcase__text .btn { margin-top: 20px; }
 
 /* ------------------------------ CTA ------------------------- */
 .cta {
@@ -722,12 +806,18 @@ a { color: inherit; text-decoration: none; }
   .cards { grid-template-columns: repeat(2, 1fr); }
   .plans { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
   .quotes { grid-template-columns: 1fr; }
+  .vsteps { grid-template-columns: repeat(2, 1fr); }
+  .showcase { grid-template-columns: 1fr; max-width: 560px; }
 }
 @media (max-width: 620px) {
   .cards { grid-template-columns: 1fr; }
   .compare { overflow-x: auto; }
   .nav__links { gap: 14px; }
   .store-badge img { height: 48px; }
+  .vsteps { grid-template-columns: 1fr; }
+  .vstep__media { max-width: 230px; }
+  .showcase__item { flex-direction: column; text-align: center; gap: 18px; }
+  .showcase__media::before { inset: 0; }
 }
 
 /* ============================================================

@@ -53,7 +53,7 @@
     </a>
     <nav class="nav__links" aria-label="Principal">
       <a href="#features">Funciones</a>
-      <a href="#story">Cómo funciona</a>
+      <a href="#vision">CarAI Vision</a>
       <a href="#precios">Precios</a>
       <a href="#descargar" class="nav__cta">Descargar</a>
     </nav>
@@ -112,31 +112,44 @@
     </div>
   </section>
 
-  <!-- FUNCIONES (capturas reales) -->
+  <!-- FUNCIONES (capturas reales de la app) -->
   <section class="features" id="features">
     <div class="feature">
       <div class="feature__text">
-        <p class="feature__kicker">Portfolio</p>
+        <p class="feature__kicker">Mi Colección</p>
         <h3>Toda tu colección, valorada al céntimo.</h3>
         <p>CarAI reúne cada coche en un portfolio que se actualiza con el mercado.
-          Ves el valor total de tu garaje y el de cada modelo, sin hojas de cálculo.</p>
+          Ves el valor total de tu garaje y el de cada modelo, con su grado de
+          inversión y su variación.</p>
       </div>
       <div class="feature__media">
-        <!-- Captura real de la app -->
-        <img src="iphone.jpg" alt="App CarAI mostrando el portfolio de la colección y el valor total del garaje" loading="lazy" />
+        <img class="screen" src="assets/screens/mi-coleccion.jpg" alt="Pantalla Mi Colección de CarAI: valor total de 456.000 € y fichas de cada coche con su variación" loading="lazy" />
       </div>
     </div>
 
     <div class="feature feature--reverse">
       <div class="feature__text">
-        <p class="feature__kicker">Inteligencia de mercado</p>
-        <h3>Insights que se acumulan en cada operación.</h3>
-        <p>Gráficas de valor, tendencias y comparables te muestran cómo evoluciona
-          cada coche — en un lenguaje que cualquiera entiende.</p>
+        <p class="feature__kicker">Collector Intelligence</p>
+        <h3>Tres escenarios para cada decisión.</h3>
+        <p>Conservador, realista y optimista: CarAI proyecta valor futuro, beneficio
+          neto, ROI y rentabilidad anualizada — y cierra con su propia conclusión
+          para cada coche.</p>
       </div>
       <div class="feature__media">
-        <!-- Captura real de la app -->
-        <img src="iphone with graph and car.jpg" alt="App CarAI mostrando la gráfica de evolución de valor de un coche" loading="lazy" />
+        <img class="screen" src="assets/screens/collector-intelligence.jpg" alt="Pantalla Collector Intelligence: escenarios conservador, realista y optimista con ROI y la conclusión de CarAI" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature__text">
+        <p class="feature__kicker">Ownership Intelligence</p>
+        <h3>Cuánto cuesta de verdad cada coche.</h3>
+        <p>Coste anual y mensual con un desglose real: combustible, mantenimiento,
+          desgaste, seguro y contingencias. Para que el disfrute nunca traiga
+          sorpresas.</p>
+      </div>
+      <div class="feature__media">
+        <img class="screen" src="assets/screens/ownership-intelligence.jpg" alt="Pantalla Ownership Intelligence: coste anual de 26.000 € con desglose por partidas" loading="lazy" />
       </div>
     </div>
   </section>
@@ -187,17 +200,90 @@
     </ul>
   </section>
 
-  <!-- GALERÍA DE CAPTURAS (placeholders — sustituye por tus capturas reales) -->
-  <section class="shots" aria-label="Capturas de la app">
-    <div class="shots__head">
-      <p class="feature__kicker">En tu bolsillo</p>
-      <h2>Pensada para el móvil, de arriba a abajo.</h2>
+  <!-- CARAI VISION — sección paso a paso -->
+  <section class="vision" id="vision" aria-label="Cómo funciona CarAI Vision">
+    <div class="vision__head">
+      <p class="feature__kicker">CarAI Vision · Freemium</p>
+      <h2>Escanea cualquier coche. <span class="grad">Tásalo al instante.</span></h2>
+      <p>Apunta la cámara a un coche que veas por la calle y CarAI Vision lo
+        identifica y lo valora en segundos. Así funciona, paso a paso.</p>
     </div>
-    <div class="shots__row">
-      <!-- PLACEHOLDER: sustituir por captura real (≈ 1170×2532). Pon el archivo en assets/ y cambia el src. -->
-      <figure class="phone phone--ph"><div class="phone__scr">[ Captura — Portfolio ]</div><figcaption>Portfolio</figcaption></figure>
-      <figure class="phone phone--ph"><div class="phone__scr">[ Captura — CarAI Vision ]</div><figcaption>Escanea y tasa</figcaption></figure>
-      <figure class="phone phone--ph"><div class="phone__scr">[ Captura — Dossier PDF ]</div><figcaption>Dossier en PDF</figcaption></figure>
+    <ol class="vsteps">
+      <li class="vstep">
+        <div class="vstep__media">
+          <span class="vstep__n">01</span>
+          <img class="screen" src="assets/screens/vision-1.jpg" alt="CarAI Vision: pantalla de escaneo capturando las vistas frontal, trasera y lateral del coche" loading="lazy" />
+        </div>
+        <h3>Escanea</h3>
+        <p>Haz 3-5 fotos del coche desde distintos ángulos; la app te guía toma a toma.</p>
+      </li>
+      <li class="vstep">
+        <div class="vstep__media">
+          <span class="vstep__n">02</span>
+          <img class="screen" src="assets/screens/vision-2.jpg" alt="CarAI Vision analizando: detectando la silueta del vehículo" loading="lazy" />
+        </div>
+        <h3>Analiza</h3>
+        <p>La IA detecta la silueta, las ópticas y las líneas de la carrocería.</p>
+      </li>
+      <li class="vstep">
+        <div class="vstep__media">
+          <span class="vstep__n">03</span>
+          <img class="screen" src="assets/screens/vision-3.jpg" alt="CarAI Vision al 88%: cruzando coincidencias e identificando la generación" loading="lazy" />
+        </div>
+        <h3>Reconoce</h3>
+        <p>Cruza miles de coincidencias para acertar la generación exacta.</p>
+      </li>
+      <li class="vstep">
+        <div class="vstep__media">
+          <span class="vstep__n">04</span>
+          <img class="screen" src="assets/screens/vision-4.jpg" alt="CarAI Vision: vehículo detectado, Porsche 911 (993) Carrera con 98% de confianza" loading="lazy" />
+        </div>
+        <h3>Identifica</h3>
+        <p>Porsche 911 (993) Carrera con un 98% de confianza. Ajusta el año si lo sabes.</p>
+      </li>
+      <li class="vstep">
+        <div class="vstep__media">
+          <span class="vstep__n">05</span>
+          <img class="screen" src="assets/screens/vision-5.jpg" alt="CarAI Vision generando el análisis profesional de mercado" loading="lazy" />
+        </div>
+        <h3>Analiza el mercado</h3>
+        <p>Genera un análisis profesional con datos reales de mercado.</p>
+      </li>
+      <li class="vstep">
+        <div class="vstep__media">
+          <span class="vstep__n">06</span>
+          <img class="screen" src="assets/screens/vision-6.jpg" alt="CarAI Vision: resultado con valor estimado de 70.000 €, rango, fiabilidad y potencial coleccionable" loading="lazy" />
+        </div>
+        <h3>Tasa</h3>
+        <p>Valor estimado, rango, fiabilidad y potencial coleccionable. En segundos.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- GARAGE CARD + DOSSIER -->
+  <section class="showcase" aria-label="Garage Card y Dossier analítico">
+    <div class="showcase__item">
+      <div class="showcase__media">
+        <img class="screen" src="assets/screens/garage-card.jpg" alt="Garage Card de CarAI: tarjeta del coleccionista con su puntuación y sus coches" loading="lazy" />
+      </div>
+      <div class="showcase__text">
+        <p class="feature__kicker">Garage Card</p>
+        <h3>Comparte tu garaje.</h3>
+        <p>Una tarjeta lista para compartir con tu perfil de coleccionista, tu
+          puntuación y los coches de tu colección.</p>
+      </div>
+    </div>
+    <div class="showcase__item">
+      <div class="showcase__media">
+        <img class="doc" src="assets/screens/dossier-preview.jpg" alt="Portada del dossier analítico en PDF del Mercedes-Benz SLS AMG 2011, valoración 205.000 €" loading="lazy" />
+      </div>
+      <div class="showcase__text">
+        <p class="feature__kicker">Dossier analítico</p>
+        <h3>Un informe profesional en PDF.</h3>
+        <p>Valoración, escenarios e historia completa de cada coche, listos para
+          vender, asegurar o documentar tu colección.</p>
+        <a class="btn btn--ghost" href="assets/dossier-carai-ejemplo.pdf" target="_blank" rel="noopener">Ver dossier de ejemplo (PDF) ↓</a>
+      </div>
     </div>
   </section>
 
