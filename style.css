@@ -585,6 +585,40 @@ a { color: inherit; text-decoration: none; }
 
   /* Barra de progreso pegada al borde inferior */
   .stage__progress { bottom: 20px; left: 24px; right: 24px; }
+
+  /* ---- Precios: carrusel horizontal para comparar planes ---- */
+  /* Quitar padding lateral de la sección para que las tarjetas sangren */
+  .pricing { padding-left: 0; padding-right: 0; }
+  .pricing__head { padding: 0 20px; }
+
+  /* Convertir el grid en scroll horizontal con snap */
+  .plans {
+    display: flex;
+    max-width: unset;
+    margin: 0;
+    padding: 8px 20px 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 14px;
+  }
+  .plans::-webkit-scrollbar { display: none; }
+
+  /* Cada tarjeta: ~78vw — se ve la siguiente asomando */
+  .plan {
+    flex: 0 0 78vw;
+    max-width: 300px;
+    scroll-snap-align: start;
+    padding: 20px 18px;
+  }
+  .plan__name          { font-size: 16px; margin-bottom: 8px; }
+  .plan__price strong  { font-size: 28px; }
+  .plan__desc          { font-size: 13px; margin-bottom: 14px; min-height: unset; }
+  .plan__save          { margin: 2px 0 12px; }
+  .plan__cta           { margin-bottom: 16px; }
+  .plan__list          { gap: 8px; }
+  .plan__list li       { font-size: 13px; padding-left: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
