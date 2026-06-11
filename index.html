@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CarAI — la app para coleccionistas de coches. Portfolio, CarAI Vision para escanear y tasar coches al instante, inteligencia de mercado y dossiers en PDF. El valor de tu garaje, siempre claro." />
+2  <meta name="theme-color" content="#05070e" />
+  <title>CarAI — El valor de tu colección, siempre claro</title>
+
+  <!-- Logo de la app: assets/logo.png (icono cuadrado). Sustitúyelo ahí si cambia. -->
+  <link rel="icon" href="assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Inter = fallback "SF Pro-like" para Windows/Android. En Mac/iOS se usa SF Pro nativo (-apple-system). -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js alojado en local (sin CDN) para que una conexión lenta no bloquee la animación -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./vendor/three.module.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#top">Saltar al contenido</a>
+
+  <!-- Pantalla de carga (precarga de los 192 fotogramas) -->
+  <div class="loader" id="loader">
+    <img class="loader__logo" src="assets/logo.png" alt="" aria-hidden="true" />
+    <div class="loader__mark">CarAI</div>
+    <div class="loader__bar"><span id="loaderFill"></span></div>
+    <div class="loader__pct" id="loaderPct">0%</div>
+  </div>
+  <script>
+    // Failsafe: si el módulo (Three.js / main.js) no llegara a cargar, nunca
+    // dejes la pantalla de carga bloqueada. main.js la oculta antes en uso normal.
+    setTimeout(function () {
+      var l = document.getElementById("loader");
+      if (l) l.classList.add("is-done");
+    }, 12000);
+  </script>
+
+  <!-- Navegación -->
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="CarAI — inicio">
+      <img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" />
+      CarAI
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#features">Funciones</a>
+      <a href="#story">Cómo funciona</a>
+      <a href="#precios">Precios</a>
+      <a href="#descargar" class="nav__cta">Descargar</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <img class="hero__appicon" src="assets/logo.png" alt="Icono de la app CarAI" />
+      <p class="hero__eyebrow">La app para coleccionistas de coches</p>
+      <h1 class="hero__title">
+        El valor de tu garaje,<br /><span class="grad">siempre claro.</span>
+      </h1>
+      <p class="hero__sub">
+        CarAI reúne tu portfolio, CarAI Vision y la inteligencia de mercado en una
+        sola app. Sabe cuánto vale tu colección hoy — y hacia dónde va.
+      </p>
+
+      <!-- Botones de descarga oficiales (sustituye [enlace] por las URLs reales de las tiendas) -->
+      <div class="stores" id="descargar">
+        <a class="store-badge" href="[enlace]" aria-label="Descárgalo en el App Store">
+          <img src="assets/appstore-badge.png" alt="Descárgalo en el App Store" />
+        </a>
+        <a class="store-badge" href="[enlace]" aria-label="Disponible en Google Play">
+          <img src="assets/googleplay-badge.png" alt="Disponible en Google Play" />
+        </a>
+      </div>
+      <p class="hero__note">Gratis para empezar · tus 3 primeros coches incluidos</p>
+    </div>
+
+    <div class="hero__cue" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero__cue-line"></div>
+    </div>
+  </section>
+
+  <!-- ANIMACIÓN POR SCROLL (Three.js — reproduce el vídeo hacia delante al bajar y hacia atrás al subir) -->
+  <section class="stage" id="story" aria-label="Animación del producto controlada por scroll">
+    <div class="stage__pin">
+      <div class="stage__canvas" id="stageCanvas"></div>
+      <div class="stage__overlay">
+        <div class="cap" data-from="0.02" data-to="0.30">
+          <h2>Tu garaje, en cifras.</h2>
+          <p>Cada coche de tu colección, tasado y actualizado en tiempo real.</p>
+        </div>
+        <div class="cap" data-from="0.34" data-to="0.62">
+          <h2>Escanea. Tasa. Al instante.</h2>
+          <p>Apunta la cámara a cualquier coche que veas y CarAI Vision te dice cuánto vale en el momento.</p>
+        </div>
+        <div class="cap" data-from="0.66" data-to="0.96">
+          <h2>Decide con datos, no con corazonadas.</h2>
+          <p>Histórico de valor y dossiers en PDF para cada coche que te importa.</p>
+        </div>
+      </div>
+      <div class="stage__progress" aria-hidden="true"><span id="stageBar"></span></div>
+    </div>
+  </section>
+
+  <!-- FUNCIONES (capturas reales) -->
+  <section class="features" id="features">
+    <div class="feature">
+      <div class="feature__text">
+        <p class="feature__kicker">Portfolio</p>
+        <h3>Toda tu colección, valorada al céntimo.</h3>
+        <p>CarAI reúne cada coche en un portfolio que se actualiza con el mercado.
+          Ves el valor total de tu garaje y el de cada modelo, sin hojas de cálculo.</p>
+      </div>
+      <div class="feature__media">
+        <!-- Captura real de la app -->
+        <img src="iphone.jpg" alt="App CarAI mostrando el portfolio de la colección y el valor total del garaje" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="feature feature--reverse">
+      <div class="feature__text">
+        <p class="feature__kicker">Inteligencia de mercado</p>
+        <h3>Insights que se acumulan en cada operación.</h3>
+        <p>Gráficas de valor, tendencias y comparables te muestran cómo evoluciona
+          cada coche — en un lenguaje que cualquiera entiende.</p>
+      </div>
+      <div class="feature__media">
+        <!-- Captura real de la app -->
+        <img src="iphone with graph and car.jpg" alt="App CarAI mostrando la gráfica de evolución de valor de un coche" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- REJILLA DE CARACTERÍSTICAS -->
+  <section class="grid-feats" aria-label="Todo lo que hace CarAI">
+    <div class="grid-feats__head">
+      <h2>Todo tu coleccionismo, en una app.</h2>
+      <p>Desde la primera valoración hasta el informe que cierra la operación.</p>
+    </div>
+    <ul class="cards">
+      <li class="card">
+        <span class="card__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg>
+        </span>
+        <h3>Portfolio ilimitado</h3>
+        <p>Reúne todos tus coches y ve el valor total de tu colección de un vistazo.</p>
+      </li>
+      <li class="card card--vision">
+        <span class="card__tag">Freemium</span>
+        <span class="card__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M4 12h16"/></svg>
+        </span>
+        <h3>CarAI Vision</h3>
+        <p>Escanea cualquier coche que veas en persona y obtén su tasación al instante.</p>
+      </li>
+      <li class="card">
+        <span class="card__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4M9 13h6M9 17h6"/></svg>
+        </span>
+        <h3>Dossiers en PDF</h3>
+        <p>Genera informes profesionales de cada coche, listos para compartir o vender.</p>
+      </li>
+      <li class="card">
+        <span class="card__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        </span>
+        <h3>Inteligencia de mercado</h3>
+        <p>Tendencias, comparables y datos completos para entender cada valoración.</p>
+      </li>
+      <li class="card">
+        <span class="card__ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-9"/><path d="M21 6v5h-5"/></svg>
+        </span>
+        <h3>Histórico de valor</h3>
+        <p>Sigue la evolución de tu colección en el tiempo, con informes detallados.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- GALERÍA DE CAPTURAS (placeholders — sustituye por tus capturas reales) -->
+  <section class="shots" aria-label="Capturas de la app">
+    <div class="shots__head">
+      <p class="feature__kicker">En tu bolsillo</p>
+      <h2>Pensada para el móvil, de arriba a abajo.</h2>
+    </div>
+    <div class="shots__row">
+      <!-- PLACEHOLDER: sustituir por captura real (≈ 1170×2532). Pon el archivo en assets/ y cambia el src. -->
+      <figure class="phone phone--ph"><div class="phone__scr">[ Captura — Portfolio ]</div><figcaption>Portfolio</figcaption></figure>
+      <figure class="phone phone--ph"><div class="phone__scr">[ Captura — CarAI Vision ]</div><figcaption>Escanea y tasa</figcaption></figure>
+      <figure class="phone phone--ph"><div class="phone__scr">[ Captura — Dossier PDF ]</div><figcaption>Dossier en PDF</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section class="pricing" id="precios">
+    <div class="pricing__head">
+      <p class="feature__kicker">Precios</p>
+      <h2>Empieza gratis. Sube a Premium cuando crezca tu colección.</h2>
+      <div class="billing" role="group" aria-label="Periodo de facturación">
+        <button type="button" class="billing__btn is-active" data-period="month" aria-pressed="true">Mensual</button>
+        <button type="button" class="billing__btn" data-period="year" aria-pressed="false">Anual <span class="billing__save">−51%</span></button>
+      </div>
+    </div>
+
+    <div class="plans">
+      <!-- Gratis -->
+      <article class="plan">
+        <h3 class="plan__name">Gratis</h3>
+        <p class="plan__price"><strong>0 €</strong></p>
+        <p class="plan__desc">Para empezar a organizar tu colección.</p>
+        <a href="#descargar" class="btn btn--ghost plan__cta">Descargar gratis</a>
+        <ul class="plan__list">
+          <li>Portfolio de hasta 3 coches</li>
+          <li>CarAI Vision con escaneos limitados</li>
+          <li>1 dossier PDF de muestra</li>
+          <li>Resumen de inteligencia de mercado</li>
+          <li>Valor actual de la colección</li>
+        </ul>
+      </article>
+
+      <!-- Premium (destacado) -->
+      <article class="plan plan--featured">
+        <span class="plan__badge">Más popular</span>
+        <h3 class="plan__name">Premium</h3>
+        <p class="plan__price">
+          <strong data-price-month="11,99 €" data-price-year="69,99 €">11,99 €</strong>
+          <span class="plan__per" data-per-month="/mes" data-per-year="/año">/mes</span>
+        </p>
+        <p class="plan__save" id="planSave" hidden>Mejor valor · ahorra ~51% frente al mensual</p>
+        <a href="#descargar" class="btn btn--primary plan__cta">Empezar Premium</a>
+        <ul class="plan__list">
+          <li>Portfolio <strong>ilimitado</strong></li>
+          <li>CarAI Vision con escaneos <strong>ilimitados</strong></li>
+          <li>Dossiers PDF ilimitados</li>
+          <li>Inteligencia de mercado completa</li>
+          <li>Histórico de valor + informes</li>
+        </ul>
+      </article>
+
+      <!-- Founders (opcional, pago único) -->
+      <article class="plan">
+        <span class="plan__badge plan__badge--soft">Edición Founders</span>
+        <h3 class="plan__name">Founders</h3>
+        <p class="plan__price"><strong>179 €</strong> <span class="plan__per">pago único</span></p>
+        <p class="plan__desc">Acceso Premium de por vida. Plazas limitadas.</p>
+        <a href="#descargar" class="btn btn--ghost plan__cta">Hazte Founder</a>
+        <ul class="plan__list">
+          <li>Todo lo de Premium, para siempre</li>
+          <li>Sin suscripción, un único pago</li>
+          <li>Insignia de fundador en la app</li>
+          <li>Acceso anticipado a novedades</li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Tabla comparativa -->
+    <div class="compare" role="region" aria-label="Comparativa de planes">
+      <table class="compare__table">
+        <thead>
+          <tr><th scope="col">Función</th><th scope="col">Gratis</th><th scope="col">Premium</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Portfolio</th><td>hasta 3 coches</td><td>Ilimitado</td></tr>
+          <tr><th scope="row">CarAI Vision</th><td>Escaneos limitados</td><td>Escaneos ilimitados</td></tr>
+          <tr><th scope="row">Dossier PDF</th><td>1 de muestra</td><td>Ilimitados</td></tr>
+          <tr><th scope="row">Inteligencia de mercado</th><td>Resumen</td><td>Completa</td></tr>
+          <tr><th scope="row">Seguimiento de valor</th><td>Valor actual</td><td>Histórico + informes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS (placeholders — sustituye por testimonios reales) -->
+  <section class="testimonials" aria-label="Lo que dicen los coleccionistas">
+    <h2>Coleccionistas que ya conducen con datos.</h2>
+    <div class="quotes">
+      <figure class="quote">
+        <blockquote>"[Sustituir por testimonio real. Una o dos frases sobre cómo CarAI le ayuda con su colección.]"</blockquote>
+        <figcaption><span class="quote__av" aria-hidden="true"></span><span><strong>[Nombre]</strong><small>[Coleccionista · ciudad]</small></span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>"[Sustituir por testimonio real. Destaca el valor del portfolio o de las alertas.]"</blockquote>
+        <figcaption><span class="quote__av" aria-hidden="true"></span><span><strong>[Nombre]</strong><small>[Coleccionista · ciudad]</small></span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>"[Sustituir por testimonio real. Habla de los dossiers o de la inteligencia de mercado.]"</blockquote>
+        <figcaption><span class="quote__av" aria-hidden="true"></span><span><strong>[Nombre]</strong><small>[Coleccionista · ciudad]</small></span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta">
+    <h2>Tu colección merece saber cuánto vale.</h2>
+    <p>Descarga CarAI y empieza gratis con tus tres primeros coches.</p>
+    <div class="stores stores--center">
+      <a class="store-badge" href="[enlace]" aria-label="Descárgalo en el App Store">
+        <img src="assets/appstore-badge.png" alt="Descárgalo en el App Store" />
+      </a>
+      <a class="store-badge" href="[enlace]" aria-label="Disponible en Google Play">
+        <img src="assets/googleplay-badge.png" alt="Disponible en Google Play" />
+      </a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot__row">
+      <span class="foot__brand"><img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI</span>
+      <nav class="foot__links" aria-label="Enlaces legales">
+        <a href="#features">Funciones</a>
+        <a href="#precios">Precios</a>
+        <a href="terminos.html">Términos</a>
+        <a href="privacidad.html">Privacidad</a>
+      </nav>
+    </div>
+    <span class="foot__copy">© 2026 CarAI · Para quienes coleccionan con cabeza.</span>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+  <!-- UI ligera: toggle de facturación (no afecta a la animación Three.js) -->
+  <script>
+    (function () {
+      const btns = document.querySelectorAll(".billing__btn");
+      const priceEl = document.querySelector("[data-price-month]");
+      const perEl = document.querySelector("[data-per-month]");
+      const saveEl = document.getElementById("planSave");
+      btns.forEach((b) =>
+        b.addEventListener("click", () => {
+          const year = b.dataset.period === "year";
+          btns.forEach((x) => {
+            const on = x === b;
+            x.classList.toggle("is-active", on);
+            x.setAttribute("aria-pressed", String(on));
+          });
+          if (priceEl) priceEl.textContent = year ? priceEl.dataset.priceYear : priceEl.dataset.priceMonth;
+          if (perEl) perEl.textContent = year ? perEl.dataset.perYear : perEl.dataset.perMonth;
+          if (saveEl) saveEl.hidden = !year;
+        })
+      );
+    })();
+  </script>
+</body>
+</html>
