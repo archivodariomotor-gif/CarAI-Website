@@ -29,22 +29,6 @@
 <body>
   <a class="skip-link" href="#top">Saltar al contenido</a>
 
-  <!-- Pantalla de carga (precarga de los 192 fotogramas) -->
-  <div class="loader" id="loader">
-    <img class="loader__logo" src="assets/logo.png" alt="" aria-hidden="true" />
-    <div class="loader__mark">CarAI</div>
-    <div class="loader__bar"><span id="loaderFill"></span></div>
-    <div class="loader__pct" id="loaderPct">0%</div>
-  </div>
-  <script>
-    // Failsafe: si el módulo (Three.js / main.js) no llegara a cargar, nunca
-    // dejes la pantalla de carga bloqueada. main.js la oculta antes en uso normal.
-    setTimeout(function () {
-      var l = document.getElementById("loader");
-      if (l) l.classList.add("is-done");
-    }, 12000);
-  </script>
-
   <!-- Navegación -->
   <header class="nav">
     <a class="nav__brand" href="#top" aria-label="CarAI — inicio">

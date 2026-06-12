@@ -58,7 +58,7 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
-h1, h2, h3, .nav__brand, .loader__mark, .btn {
+h1, h2, h3, .nav__brand, .btn {
   font-family: var(--font-sans);
   letter-spacing: -0.02em;
 }
@@ -73,44 +73,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ----------------------------- Loader ----------------------- */
-.loader {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: grid;
-  place-content: center;
-  gap: 22px;
-  background: var(--bg-0);
-  transition: opacity 0.6s var(--ease), visibility 0.6s;
-}
-.loader.is-done { opacity: 0; visibility: hidden; }
-.loader__mark {
-  font-size: clamp(28px, 6vw, 46px);
-  font-weight: 800;
-  text-align: center;
-  letter-spacing: 0.02em;
-}
-.loader__bar {
-  width: min(260px, 60vw);
-  height: 3px;
-  border-radius: 99px;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-.loader__bar span {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 0.2s linear;
-}
-.loader__pct {
-  text-align: center;
-  font-size: 13px;
-  color: var(--ink-faint);
-  letter-spacing: 0.18em;
-}
-
 /* ------------------------------ Nav ------------------------- */
 .nav {
   position: fixed;
@@ -653,15 +615,6 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   box-shadow: 0 0 0 1px var(--line);
 }
-.loader__logo {
-  width: 76px; height: 76px;
-  border-radius: 20px;
-  margin: 0 auto;
-  display: block;
-  object-fit: cover;
-  box-shadow: 0 14px 36px -12px rgba(0,0,0,0.7), 0 0 0 1px var(--line);
-}
-
 /* ============================================================
    Download badges
    ============================================================ */

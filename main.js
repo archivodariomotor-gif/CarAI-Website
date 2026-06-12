@@ -20,25 +20,11 @@ import * as THREE from "three";
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const els = {
-  loader:     document.getElementById("loader"),
-  loaderFill: document.getElementById("loaderFill"),
-  loaderPct:  document.getElementById("loaderPct"),
-  mount:      document.getElementById("stageCanvas"),
-  stage:      document.querySelector(".stage"),
-  stageBar:   document.getElementById("stageBar"),
-  caps:       Array.from(document.querySelectorAll(".cap")),
+  mount:    document.getElementById("stageCanvas"),
+  stage:    document.querySelector(".stage"),
+  stageBar: document.getElementById("stageBar"),
+  caps:     Array.from(document.querySelectorAll(".cap")),
 };
-
-// Hide the loading screen. Safe to call many times. The page is NEVER left
-// stuck behind it: main() calls this when frames are ready or after a safety
-// timeout, the catch calls it on error, and index.html has an inline failsafe
-// in case this module never even loads.
-let revealed = false;
-function reveal() {
-  if (revealed) return;
-  revealed = true;
-  if (els.loader) els.loader.classList.add("is-done");
-}
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const smoothstep = (e0, e1, x) => {
@@ -186,21 +172,9 @@ async function main() {
   const images = new Array(count);
   const loaded = new Uint8Array(count);
 
-  // Drive the loading bar. loadImage() always resolves (even on a failed/blank
-  // frame), so the count — and therefore the bar — can never stall part-way.
-  let loadedCount = 0;
-  const onFrameLoaded = () => {
-    loadedCount++;
-    const pct = Math.round((loadedCount / count) * 100);
-    if (els.loaderFill) els.loaderFill.style.width = pct + "%";
-    if (els.loaderPct) els.loaderPct.textContent = pct + "%";
-    if (loadedCount >= count) reveal(); // all frames ready → show the site
-  };
-
   // Load frame 0 first so the stage has a crisp first frame.
   images[0] = await loadImage(url(0));
   loaded[0] = 1;
-  onFrameLoaded();
 
   const view = buildScene(els.mount, images[0]);
   view.setImages(images, loaded);
@@ -208,15 +182,10 @@ async function main() {
   view.show(0, count);
   view.renderer.render(view.scene, view.camera);
 
-  // Load the rest in parallel, advancing the bar as each arrives.
+  // Load the rest in background; animation uses nearest loaded frame until each arrives.
   for (let i = 1; i < count; i++) {
-    loadImage(url(i)).then((img) => { images[i] = img; loaded[i] = 1; onFrameLoaded(); });
+    loadImage(url(i)).then((img) => { images[i] = img; loaded[i] = 1; });
   }
-
-  // Safety net: never trap the user behind the loader. Reveal after 8 s even if
-  // frames are still streaming in (slow connection) — the animation degrades
-  // gracefully to the nearest loaded frame until the rest arrive.
-  setTimeout(reveal, 8000);
 
   let currentFrame = 0;            // smoothed, fractional
   const TAU = 0.10;                // seconds — damping time constant (lower = snappier)
@@ -271,8 +240,5 @@ async function main() {
 }
 
 main().catch((err) => {
-  // Any failure (e.g. manifest fetch) must still reveal the page — never leave
-  // the user stuck behind the loader.
   console.error("CarAI animation failed to start:", err);
-  reveal();
 });
