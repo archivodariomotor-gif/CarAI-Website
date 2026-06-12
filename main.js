@@ -13,11 +13,16 @@
 //   • MAX FLUIDITY: the two adjacent frames are blended in the shader
 //     by the fractional index (continuous sub-frame motion), with
 //     frame-rate-independent damping and a 2-texture swap pool.
+//   • MOBILE: 192 frames × ~15 MB decoded ≈ 2.8 GB — Safari kills
+//     the tab. On small/touch screens we use the source video instead.
 // ============================================================
 
-import * as THREE from "three";
+import * as THREE from "./vendor/three.module.js";
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Any touch-primary or narrow screen gets the video path.
+const isMobile = window.innerWidth < 900 || navigator.maxTouchPoints > 0;
 
 const els = {
   mount:    document.getElementById("stageCanvas"),
@@ -31,6 +36,27 @@ const smoothstep = (e0, e1, x) => {
   const t = clamp((x - e0) / (e1 - e0), 0, 1);
   return t * t * (3 - 2 * t);
 };
+
+function scrollProgress() {
+  const rect = els.stage.getBoundingClientRect();
+  const scrollable = rect.height - window.innerHeight;
+  if (scrollable <= 0) return 0;
+  return clamp(-rect.top / scrollable, 0, 1);
+}
+
+function updateCaptions(p) {
+  for (const cap of els.caps) {
+    const from = parseFloat(cap.dataset.from);
+    const to = parseFloat(cap.dataset.to);
+    let o = 0;
+    if (p >= from && p <= to) {
+      const local = (p - from) / (to - from);
+      o = Math.min(smoothstep(0, 0.18, local), 1 - smoothstep(0.82, 1, local));
+    }
+    cap.style.opacity = o.toFixed(3);
+    cap.style.transform = `translateY(${((1 - o) * 26).toFixed(1)}px)`;
+  }
+}
 
 function loadImage(src) {
   return new Promise((resolve) => {
@@ -165,6 +191,33 @@ function buildScene(mount, firstImage) {
 //  Drive it all from scroll.
 // ------------------------------------------------------------
 async function main() {
+
+  // ── Mobile path ──────────────────────────────────────────────
+  // Loading 192 decoded JPEG bitmaps (~2.8 GB) crashes Safari on iOS.
+  // Instead, play the source video in a loop; captions still follow scroll.
+  if (isMobile) {
+    const video = document.createElement("video");
+    video.src = "transition.mp4";
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    // iOS Safari requires both the property and the attribute for autoplay
+    video.setAttribute("autoplay", "");
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.style.cssText = "width:100%;height:100%;object-fit:cover;display:block;";
+    els.mount.appendChild(video);
+
+    (function tick() {
+      const p = scrollProgress();
+      if (els.stageBar) els.stageBar.style.width = (p * 100).toFixed(2) + "%";
+      updateCaptions(p);
+      requestAnimationFrame(tick);
+    })();
+    return;
+  }
+
+  // ── Desktop path (Three.js scroll-scrub) ─────────────────────
   const manifest = await fetch("frames/manifest.json").then((r) => r.json());
   const { count, basePath, prefix, ext, padding } = manifest;
   const url = (i) => `${basePath}${prefix}${String(i + 1).padStart(padding, "0")}${ext}`;
@@ -190,27 +243,6 @@ async function main() {
   let currentFrame = 0;            // smoothed, fractional
   const TAU = 0.10;                // seconds — damping time constant (lower = snappier)
   let lastT = performance.now();
-
-  function scrollProgress() {
-    const rect = els.stage.getBoundingClientRect();
-    const scrollable = rect.height - window.innerHeight;
-    if (scrollable <= 0) return 0;
-    return clamp(-rect.top / scrollable, 0, 1);
-  }
-
-  function updateCaptions(p) {
-    for (const cap of els.caps) {
-      const from = parseFloat(cap.dataset.from);
-      const to = parseFloat(cap.dataset.to);
-      let o = 0;
-      if (p >= from && p <= to) {
-        const local = (p - from) / (to - from);
-        o = Math.min(smoothstep(0, 0.18, local), 1 - smoothstep(0.82, 1, local));
-      }
-      cap.style.opacity = o.toFixed(3);
-      cap.style.transform = `translateY(${((1 - o) * 26).toFixed(1)}px)`;
-    }
-  }
 
   function tick(now) {
     const dt = Math.min((now - lastT) / 1000, 0.05); // clamp big gaps (tab switch)

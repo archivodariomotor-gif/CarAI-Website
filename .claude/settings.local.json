@@ -42,7 +42,14 @@
       "Bash(curl -s -o /dev/null -w \"index -> %{http_code}\\\\n\" http://127.0.0.1:8765/index.html)",
       "Bash(python3 /tmp/carai_verify_entry.py)",
       "Bash(mkdir -p vendor)",
-      "Bash(curl -sSL -o vendor/three.module.js \"https://unpkg.com/three@0.160.0/build/three.module.js\")"
+      "Bash(curl -sSL -o vendor/three.module.js \"https://unpkg.com/three@0.160.0/build/three.module.js\")",
+      "Bash(sips --resampleWidth 820 -s format jpeg -s formatOptions 88 /tmp/dossier_page-1.png --out assets/screens/dossier-preview.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight assets/screens/dossier-preview.jpg)",
+      "Bash(git fetch *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git *)"
     ]
   }
 }

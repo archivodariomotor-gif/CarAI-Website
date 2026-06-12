@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="CarAI — la app para coleccionistas de coches. Portfolio, CarAI Vision para escanear y tasar coches al instante, inteligencia de mercado y dossiers en PDF. El valor de tu garaje, siempre claro." />
-2  <meta name="theme-color" content="#05070e" />
+  <meta name="theme-color" content="#05070e" />
   <title>CarAI — El valor de tu colección, siempre claro</title>
 
   <!-- Logo de la app: assets/logo.png (icono cuadrado). Sustitúyelo ahí si cambia. -->
@@ -18,13 +18,6 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- Three.js alojado en local (sin CDN) para que una conexión lenta no bloquee la animación -->
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "./vendor/three.module.js"
-    }
-  }
-  </script>
 </head>
 <body>
   <a class="skip-link" href="#top">Saltar al contenido</a>
@@ -65,7 +58,7 @@
           <img src="assets/googleplay-badge.png" alt="Disponible en Google Play" />
         </a>
       </div>
-      <p class="hero__note">Gratis para empezar · tus 3 primeros coches incluidos</p>
+      <p class="hero__note">Tu primera tasación completa, gratis · CarAI Vision gratis hasta 10 escaneos/día</p>
     </div>
 
     <div class="hero__cue" aria-hidden="true">
@@ -84,8 +77,8 @@
           <p>Cada coche de tu colección, tasado y actualizado en tiempo real.</p>
         </div>
         <div class="cap" data-from="0.34" data-to="0.62">
-          <h2>Escanea. Tasa. Al instante.</h2>
-          <p>Apunta la cámara a cualquier coche que veas y CarAI Vision te dice cuánto vale en el momento.</p>
+          <h2>¿Qué coche es ese? Apunta y descúbrelo gratis.</h2>
+          <p>CarAI Vision identifica marca, modelo y generación al instante. Tásalo con una llave cuando quieras.</p>
         </div>
         <div class="cap" data-from="0.66" data-to="0.96">
           <h2>Decide con datos, no con corazonadas.</h2>
@@ -275,11 +268,8 @@
   <section class="pricing" id="precios">
     <div class="pricing__head">
       <p class="feature__kicker">Precios</p>
-      <h2>Empieza gratis. Sube a Premium cuando crezca tu colección.</h2>
-      <div class="billing" role="group" aria-label="Periodo de facturación">
-        <button type="button" class="billing__btn is-active" data-period="month" aria-pressed="true">Mensual</button>
-        <button type="button" class="billing__btn" data-period="year" aria-pressed="false">Anual <span class="billing__save">−51%</span></button>
-      </div>
+      <h2>Tu primera tasación completa, gratis.</h2>
+      <p class="pricing__sub">Paga solo cuando lo necesites. O hazte Collector y conduce sin límites.</p>
     </div>
 
     <div class="plans">
@@ -287,66 +277,89 @@
       <article class="plan">
         <h3 class="plan__name">Gratis</h3>
         <p class="plan__price"><strong>0 €</strong></p>
-        <p class="plan__desc">Para empezar a organizar tu colección.</p>
+        <p class="plan__desc">Para descubrir CarAI de verdad.</p>
         <a href="#descargar" class="btn btn--ghost plan__cta">Descargar gratis</a>
         <ul class="plan__list">
-          <li>Portfolio de hasta 3 coches</li>
-          <li>CarAI Vision con escaneos limitados</li>
-          <li>1 dossier PDF de muestra</li>
-          <li>Resumen de inteligencia de mercado</li>
-          <li>Valor actual de la colección</li>
+          <li><strong>1 análisis completo</strong> gratis, de por vida</li>
+          <li>CarAI Vision · identificación gratis hasta 10 escaneos/día</li>
+          <li>1 análisis censurado cada 90 días</li>
+          <li>Guarda tu coche tasado en el garaje</li>
+          <li>PDF con marca de agua «MUESTRA»</li>
         </ul>
       </article>
 
-      <!-- Premium (destacado) -->
+      <!-- Llaves (destacado) -->
       <article class="plan plan--featured">
         <span class="plan__badge">Más popular</span>
-        <h3 class="plan__name">Premium</h3>
-        <p class="plan__price">
-          <strong data-price-month="11,99 €" data-price-year="69,99 €">11,99 €</strong>
-          <span class="plan__per" data-per-month="/mes" data-per-year="/año">/mes</span>
-        </p>
-        <p class="plan__save" id="planSave" hidden>Mejor valor · ahorra ~51% frente al mensual</p>
-        <a href="#descargar" class="btn btn--primary plan__cta">Empezar Premium</a>
+        <h3 class="plan__name">Llaves 🔑</h3>
+        <div class="plan__keys">
+          <div class="plan__key-row">
+            <span class="plan__key-price">4,99 €</span>
+            <span class="plan__key-label">· 1 llave</span>
+          </div>
+          <div class="plan__key-row plan__key-row--deal">
+            <span class="plan__key-price">9,99 €</span>
+            <span class="plan__key-label">· 3 llaves &nbsp;<em>−33%</em></span>
+          </div>
+        </div>
+        <p class="plan__desc">Sin suscripción. Cada llave abre un análisis completo.</p>
+        <a href="#descargar" class="btn btn--primary plan__cta">Conseguir llaves</a>
         <ul class="plan__list">
-          <li>Portfolio <strong>ilimitado</strong></li>
-          <li>CarAI Vision con escaneos <strong>ilimitados</strong></li>
-          <li>Dossiers PDF ilimitados</li>
-          <li>Inteligencia de mercado completa</li>
-          <li>Histórico de valor + informes</li>
+          <li>Análisis completo con PDF sin marca de agua</li>
+          <li>Precio justo + comparables reales de portales</li>
+          <li>Argumentos de negociación personalizados</li>
+          <li>Gráfico de evolución de valor</li>
+          <li>Las llaves no caducan nunca</li>
         </ul>
+        <p class="plan__legal">* Precio orientativo para España; el precio final lo fija tu tienda de aplicaciones.</p>
       </article>
 
-      <!-- Founders (opcional, pago único) -->
+      <!-- Collector -->
       <article class="plan">
-        <span class="plan__badge plan__badge--soft">Edición Founders</span>
-        <h3 class="plan__name">Founders</h3>
-        <p class="plan__price"><strong>179 €</strong> <span class="plan__per">pago único</span></p>
-        <p class="plan__desc">Acceso Premium de por vida. Plazas limitadas.</p>
-        <a href="#descargar" class="btn btn--ghost plan__cta">Hazte Founder</a>
+        <h3 class="plan__name">CarAI Collector</h3>
+        <p class="plan__price">
+          <strong>{PRECIO_MENSUAL}</strong>
+          <span class="plan__per">/mes</span>
+        </p>
+        <p class="plan__save-note">o {PRECIO_ANUAL}/año · mejor valor</p>
+        <p class="plan__desc">Para coleccionistas y profesionales. Todo, sin límites.</p>
+        <a href="#descargar" class="btn btn--ghost plan__cta">Empezar Collector</a>
         <ul class="plan__list">
-          <li>Todo lo de Premium, para siempre</li>
-          <li>Sin suscripción, un único pago</li>
-          <li>Insignia de fundador en la app</li>
-          <li>Acceso anticipado a novedades</li>
+          <li>Análisis ilimitados sin llaves</li>
+          <li>CarAI Vision <strong>ilimitado</strong></li>
+          <li>Portfolio y watchlist sin límites</li>
+          <li>Inteligencia de mercado completa</li>
+          <li>Calculadora ROI</li>
+          <li>Dossiers PDF ilimitados sin marca de agua</li>
         </ul>
       </article>
     </div>
 
-    <!-- Tabla comparativa -->
-    <div class="compare" role="region" aria-label="Comparativa de planes">
-      <table class="compare__table">
-        <thead>
-          <tr><th scope="col">Función</th><th scope="col">Gratis</th><th scope="col">Premium</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Portfolio</th><td>hasta 3 coches</td><td>Ilimitado</td></tr>
-          <tr><th scope="row">CarAI Vision</th><td>Escaneos limitados</td><td>Escaneos ilimitados</td></tr>
-          <tr><th scope="row">Dossier PDF</th><td>1 de muestra</td><td>Ilimitados</td></tr>
-          <tr><th scope="row">Inteligencia de mercado</th><td>Resumen</td><td>Completa</td></tr>
-          <tr><th scope="row">Seguimiento de valor</th><td>Valor actual</td><td>Histórico + informes</td></tr>
-        </tbody>
-      </table>
+    <!-- FAQ -->
+    <div class="faq">
+      <h3 class="faq__title">Preguntas frecuentes</h3>
+      <dl class="faq__list">
+        <div class="faq__item">
+          <dt>¿Qué es una llave?</dt>
+          <dd>Una llave desbloquea un análisis completo: precio justo exacto, comparables reales de portales, argumentos de negociación personalizados, gráfico de evolución histórica y dossier PDF sin marca de agua.</dd>
+        </div>
+        <div class="faq__item">
+          <dt>¿Las llaves caducan?</dt>
+          <dd>No. Las llaves son tuyas para siempre. Úsalas cuando las necesites, sin fecha de expiración.</dd>
+        </div>
+        <div class="faq__item">
+          <dt>¿Qué incluye el análisis completo?</dt>
+          <dd>Precio justo exacto con rango de mercado, comparables reales de portales de compraventa, argumentos de negociación adaptados a ese coche, gráfico de evolución histórica de valor y dossier PDF profesional.</dd>
+        </div>
+        <div class="faq__item">
+          <dt>¿Qué es el análisis censurado?</dt>
+          <dd>El análisis se ejecuta de verdad, pero los datos aparecen borrosos. Ves que tu respuesta existe y que está a una sola llave de distancia. Se recarga uno nuevo cada 90 días.</dd>
+        </div>
+        <div class="faq__item">
+          <dt>¿Hay regalos al registrarse?</dt>
+          <dd>Sí. Al crear tu cuenta recibes una tasación de regalo (precio justo del coche, sin el informe completo). Y cada año, en tu cumpleaños 🎂, una llave gratis.</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -372,7 +385,7 @@
   <!-- CTA FINAL -->
   <section class="cta">
     <h2>Tu colección merece saber cuánto vale.</h2>
-    <p>Descarga CarAI y empieza gratis con tus tres primeros coches.</p>
+    <p>Descarga CarAI y obtén tu primera tasación completa gratis.</p>
     <div class="stores stores--center">
       <a class="store-badge" href="[enlace]" aria-label="Descárgalo en el App Store">
         <img src="assets/appstore-badge.png" alt="Descárgalo en el App Store" />
@@ -397,27 +410,5 @@
   </footer>
 
   <script type="module" src="main.js"></script>
-  <!-- UI ligera: toggle de facturación (no afecta a la animación Three.js) -->
-  <script>
-    (function () {
-      const btns = document.querySelectorAll(".billing__btn");
-      const priceEl = document.querySelector("[data-price-month]");
-      const perEl = document.querySelector("[data-per-month]");
-      const saveEl = document.getElementById("planSave");
-      btns.forEach((b) =>
-        b.addEventListener("click", () => {
-          const year = b.dataset.period === "year";
-          btns.forEach((x) => {
-            const on = x === b;
-            x.classList.toggle("is-active", on);
-            x.setAttribute("aria-pressed", String(on));
-          });
-          if (priceEl) priceEl.textContent = year ? priceEl.dataset.priceYear : priceEl.dataset.priceMonth;
-          if (perEl) perEl.textContent = year ? perEl.dataset.perYear : perEl.dataset.perMonth;
-          if (saveEl) saveEl.hidden = !year;
-        })
-      );
-    })();
-  </script>
 </body>
 </html>
