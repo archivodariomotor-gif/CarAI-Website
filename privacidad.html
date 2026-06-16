@@ -63,7 +63,7 @@
         <li><strong>NIF:</strong> 45128313J</li>
         <li><strong>Domicilio:</strong> Calle Príncipe de Vergara 109</li>
         <li><strong>Correo de privacidad:</strong> support@joincarai.com</li>
-        <li><strong>Delegado de Protección de Datos (DPO), si aplica:</strong> [contacto del DPO]</li>
+        <li><strong>DPO:</strong> No se ha designado Delegado de Protección de Datos al no resultar obligatorio conforme al art. 37 RGPD para esta actividad de tratamiento.</li>
       </ul>
       <p>Tratamos tus datos conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley
         Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos
@@ -90,31 +90,37 @@
       </ul>
 
       <h2 id="p4">4. CarAI Vision e imágenes</h2>
-      <p>Cuando usas CarAI Vision, la imagen se procesa para reconocer el vehículo y
-        estimar su valor al instante. [Indica aquí el tratamiento real:] el procesamiento se realiza
-        [en el dispositivo / en nuestros servidores / mediante el proveedor [nombre]] y la
-        imagen se [conserva asociada a tu colección / descarta tras el análisis]. Salvo tu
-        <strong>consentimiento expreso</strong>, no empleamos tus imágenes para entrenar
-        modelos ni las cedemos con fines comerciales. Si las imágenes pudieran contener
-        datos de categorías especiales (por ejemplo, matrículas o personas), describe aquí
-        cómo se minimizan o anonimizan.</p>
+      <p>Cuando usas CarAI Vision, la imagen se envía a la API de <strong>Google LLC
+        (Gemini)</strong>, que actúa como encargado del tratamiento bajo un acuerdo de
+        procesado de datos (Data Processing Amendment). Google procesa la imagen únicamente
+        para identificar el vehículo; el resultado se devuelve a CarAI y la imagen se
+        <strong>conserva asociada a tu vehículo en tu garaje</strong> dentro de la
+        plataforma Supabase mientras tu cuenta esté activa.</p>
+      <p>Salvo <strong>consentimiento expreso</strong>, no empleamos tus imágenes para
+        entrenar modelos propios ni las cedemos con fines comerciales. Dado que las
+        fotografías pueden capturar matrículas u otras personas en segundo plano, te
+        recomendamos enfocar el vehículo y minimizar la captura de datos de terceros.</p>
 
       <h2 id="p5">5. Destinatarios y encargados del tratamiento</h2>
       <p>No vendemos tus datos personales. Podemos compartirlos con proveedores que nos
         prestan servicios bajo contrato de encargo (art. 28 RGPD), por ejemplo:</p>
       <ul>
-        <li>Alojamiento e infraestructura en la nube — [proveedor].</li>
-        <li>Analítica y diagnóstico de errores — [proveedor].</li>
-        <li>Notificaciones y correo transaccional — [proveedor].</li>
-        <li>Procesado de pagos y suscripciones — Apple y Google.</li>
+        <li><strong>Base de datos, almacenamiento y autenticación</strong> — Supabase Inc. (infraestructura sobre Amazon Web Services).</li>
+        <li><strong>Inteligencia artificial (CarAI Vision)</strong> — Google LLC (API Gemini).</li>
+        <li><strong>Correo de autenticación</strong> — Supabase Auth (emails de verificación y recuperación de contraseña).</li>
+        <li><strong>Procesado de pagos y suscripciones</strong> — Apple Inc. (App Store) y Google LLC (Google Play).</li>
       </ul>
       <p>También podremos comunicar datos a autoridades cuando exista una obligación legal.</p>
 
       <h2 id="p6">6. Transferencias internacionales</h2>
-      <p>Si alguno de nuestros proveedores trata datos fuera del Espacio Económico Europeo,
-        nos aseguramos de que existan garantías adecuadas (por ejemplo, decisiones de
-        adecuación o Cláusulas Contractuales Tipo de la Comisión Europea). [Especifica los
-        proveedores y países cuando los confirmes.]</p>
+      <p>Algunos proveedores operan o transfieren datos fuera del Espacio Económico Europeo,
+        principalmente a <strong>Estados Unidos</strong>. Las garantías aplicadas son:</p>
+      <ul>
+        <li><strong>Google LLC</strong> — Cláusulas Contractuales Tipo (CCT) aprobadas por la Comisión Europea, conforme al art. 46.2.c RGPD.</li>
+        <li><strong>Supabase Inc. / Amazon Web Services</strong> — CCT junto con medidas técnicas adicionales de cifrado y control de acceso.</li>
+      </ul>
+      <p>Puedes solicitar más información o copia de las garantías escribiendo a
+        <a href="mailto:support@joincarai.com">support@joincarai.com</a>.</p>
 
       <h2 id="p7">7. Plazos de conservación</h2>
       <p>Conservamos tus datos mientras tu cuenta esté activa y, tras su baja, durante los
