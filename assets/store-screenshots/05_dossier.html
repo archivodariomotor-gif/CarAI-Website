@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="base.css">
+<style>
+  /* Key light: neutral-white studio — PDF document */
+  .bg {
+    background:
+      radial-gradient(ellipse 1400px 800px at 50% -80px,  rgba(255,255,255,.08)  0%, transparent 70%),
+      radial-gradient(ellipse 800px 600px at -80px 1000px, rgba(91,140,255,.09)   0%, transparent 65%),
+      radial-gradient(ellipse 600px 400px at 1360px 800px, rgba(78,224,192,.07)   0%, transparent 60%),
+      radial-gradient(ellipse 1000px 500px at 50% 2850px,  rgba(91,140,255,.05)   0%, transparent 70%);
+  }
+  .kicker { color: #4ee0c0; }
+  .h1 em  { font-style: normal; color: #4ee0c0; }
+
+  /* Document floating layout — no phone frame */
+  .document-wrap {
+    position: absolute;
+    bottom: 90px; left: 50%; transform: translateX(-50%) rotate(1.5deg);
+    filter:
+      drop-shadow(0 60px 180px rgba(0,0,0,.96))
+      drop-shadow(0 0 90px rgba(91,140,255,.28))
+      drop-shadow(0 0 40px rgba(78,224,192,.12));
+  }
+  .document-wrap img {
+    width: 1020px;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.14);
+  }
+
+  /* Second document behind (depth) */
+  .document-back {
+    position: absolute;
+    bottom: 50px; left: 50%; transform: translateX(-54%) rotate(-2.5deg);
+    z-index: -1;
+    filter: drop-shadow(0 40px 120px rgba(0,0,0,.8)) brightness(0.45);
+  }
+  .document-back img {
+    width: 1020px;
+    border-radius: 22px;
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="shot">
+  <div class="brand">
+    <img src="../logo.png" alt="CarAI">
+    <span class="brand-name">CarAI</span>
+  </div>
+  <p class="kicker">Dossier analítico</p>
+  <h1 class="h1">Informe profesional<br>en PDF. <em>Siempre listo.</em></h1>
+  <p class="sub">Valoración completa, comparables, historia y ROI —<br>para vender, asegurar o documentar cualquier coche.</p>
+</div>
+<!-- Second doc (behind, gives depth) -->
+<div class="document-back">
+  <img src="../screens/dossier-preview.jpg" alt="">
+</div>
+<!-- Main document -->
+<div class="document-wrap">
+  <img src="../screens/dossier-preview.jpg" alt="Dossier analítico — CarAI">
+</div>
+</body>
+</html>

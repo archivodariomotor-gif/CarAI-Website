@@ -1,0 +1,111 @@
+/* ============================================================
+   CarAI App Store Screenshots — base styles
+   Canvas: 1284 × 2778 px  (iPhone 6.5" / iPhone 14 Plus)
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1284px;
+  height: 2778px;
+  overflow: hidden;
+  background: #05070e;
+  position: relative;
+}
+
+/* ── Studio background lights (overridden per file) ── */
+.bg {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 1200px 700px at 50% -80px,  rgba(255,255,255,.065) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 600px at -80px 1000px, rgba(91,140,255,.12)   0%, transparent 65%),
+    radial-gradient(ellipse 600px 450px at 1360px 700px, rgba(78,224,192,.08)   0%, transparent 60%),
+    radial-gradient(ellipse 1000px 500px at 50% 2850px, rgba(91,140,255,.06)   0%, transparent 70%);
+}
+
+/* ── Top-left text block ── */
+.shot {
+  position: relative; z-index: 1;
+  width: 1284px; height: 2778px;
+  display: flex; flex-direction: column;
+  align-items: flex-start;
+  padding: 110px 96px 0;
+}
+
+/* Brand row */
+.brand { display: flex; align-items: center; gap: 22px; margin-bottom: 60px; }
+.brand img {
+  width: 76px; height: 76px; border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.12);
+}
+.brand-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 42px; font-weight: 700; letter-spacing: -.025em; color: #fff;
+}
+
+/* Kicker */
+.kicker {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 24px; font-weight: 600; letter-spacing: .16em;
+  text-transform: uppercase; color: #4ee0c0; margin-bottom: 26px;
+}
+
+/* Headline */
+.h1 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 94px; font-weight: 800; line-height: 1.0; letter-spacing: -.035em;
+  color: #fff; margin-bottom: 32px;
+}
+
+/* Subtitle */
+.sub {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-size: 32px; font-weight: 400; line-height: 1.48;
+  color: rgba(255,255,255,.54); max-width: 980px;
+}
+
+/* ── iPhone frame (positioned at bottom, centered) ── */
+.device {
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+}
+
+.iphone {
+  position: relative;
+  width: 830px;
+  height: 1794px; /* 830 × (926/430) ≈ 830 × 2.153 */
+  border-radius: 122px;
+  border: 14px solid rgba(255,255,255,.18);
+  background: #000;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.055),
+    inset 0 0 0 2px rgba(255,255,255,.04),
+    0 -40px 120px rgba(91,140,255,.22),
+    0 -12px 60px rgba(78,224,192,.10),
+    0 100px 220px -60px rgba(0,0,0,1);
+}
+
+.iphone img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+/* Dynamic Island */
+.island {
+  position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
+  width: 256px; height: 74px; background: #000; border-radius: 38px; z-index: 10;
+}
+
+/* ── Document frame (screenshot 5 — dossier) ── */
+.document-wrap {
+  position: absolute;
+  bottom: 80px; left: 50%; transform: translateX(-50%);
+  filter:
+    drop-shadow(0 60px 160px rgba(0,0,0,.95))
+    drop-shadow(0 0 80px rgba(91,140,255,.25))
+    drop-shadow(0 0 30px rgba(78,224,192,.12));
+}
+.document-wrap img {
+  width: 960px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.12);
+}
