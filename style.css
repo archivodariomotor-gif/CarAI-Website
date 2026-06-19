@@ -893,3 +893,21 @@ a { color: inherit; text-decoration: none; }
 .legal__body a:hover, .legal__back a:hover { color: var(--ink); }
 
 .legal__back { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); }
+
+/* ============================================================
+   Language switch
+   ============================================================ */
+.lang-switch {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: color 0.18s, border-color 0.18s;
+  white-space: nowrap;
+}
+.lang-switch:hover { color: var(--ink); border-color: rgba(255,255,255,0.22); }

@@ -17,6 +17,16 @@
 
   <link rel="stylesheet" href="style.css" />
 
+  <!-- Redirect non-Spanish browsers to the English version -->
+  <script>
+    (function(){
+      var l = (navigator.language || '').toLowerCase();
+      if (!l.startsWith('es') && !sessionStorage.getItem('carai-force-es')) {
+        location.replace('index-en.html');
+      }
+    })();
+  </script>
+
   <!-- Three.js alojado en local (sin CDN) para que una conexión lenta no bloquee la animación -->
 </head>
 <body>
@@ -33,6 +43,7 @@
       <a href="#vision">CarAI Vision</a>
       <a href="#precios">Precios</a>
       <a href="#descargar" class="nav__cta">Descargar</a>
+      <a class="lang-switch" href="index-en.html" aria-label="Switch to English">EN</a>
     </nav>
   </header>
 
