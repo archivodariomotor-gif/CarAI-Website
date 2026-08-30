@@ -2,7 +2,7 @@
   "count": 192,
   "basePath": "frames/",
   "prefix": "frame_",
-  "ext": ".jpg",
+  "ext": ".webp",
   "padding": 4,
   "width": 2560,
   "height": 1440,

@@ -117,6 +117,17 @@ function buildScene(mount, firstImage) {
       uniform float uImageAspect;
       uniform float uViewAspect;
       varying vec2 vUv;
+
+      // Screen-space hash → ordered triangular-PDF dither. Keyed to the pixel
+      // position (not the content), so it stays perfectly still while the frame
+      // morphs underneath — no shimmer, just banding dissolved on the final
+      // 8-bit output (covers both the JPEG/WebP frames AND the vignette ramp).
+      float hash12(vec2 p) {
+        vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+        p3 += dot(p3, p3.yzx + 33.33);
+        return fract((p3.x + p3.y) * p3.z);
+      }
+
       void main() {
         vec2 uv = vUv;
         // object-fit: cover (same for both frames — identical aspect)
@@ -130,6 +141,9 @@ function buildScene(mount, firstImage) {
         // cinematic vignette so frames melt into the gradient
         float vig = smoothstep(1.05, 0.35, length(vUv - 0.5));
         col *= mix(0.78, 1.0, vig);
+        // triangular-PDF dither (±1 LSB) — kills gradient banding at output
+        float d = hash12(gl_FragCoord.xy) + hash12(gl_FragCoord.xy + 41.7) - 1.0;
+        col += d / 255.0;
         gl_FragColor = vec4(col, 1.0);
       }
     `,
@@ -193,20 +207,38 @@ function buildScene(mount, firstImage) {
 async function main() {
 
   // ── Mobile path ──────────────────────────────────────────────
-  // Loading 192 decoded JPEG bitmaps (~2.8 GB) crashes Safari on iOS.
-  // Instead, play the source video in a loop; captions still follow scroll.
+  // Loading 192 decoded bitmaps (~2.8 GB) crashes Safari on iOS. Instead we
+  // play a seamless, debanded boomerang loop (transition-loop.mp4 = the clip
+  // forward + reversed, so it never jump-cuts at the loop point). Captions
+  // still follow scroll.
   if (isMobile) {
     const video = document.createElement("video");
-    video.src = "transition.mp4";
-    video.autoplay = true;
+    video.src = "transition-loop.mp4";
+    video.poster = "frames/frame_0001.webp"; // instant first paint
     video.muted = true;
     video.loop = true;
-    // iOS Safari requires both the property and the attribute for autoplay
-    video.setAttribute("autoplay", "");
+    video.playsInline = true;
+    video.preload = "auto";
+    video.disablePictureInPicture = true;
+    // iOS Safari requires both the property and the attribute for inline autoplay
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
     video.style.cssText = "width:100%;height:100%;object-fit:cover;display:block;";
     els.mount.appendChild(video);
+
+    // Respect reduced-motion: hold a still frame instead of looping.
+    if (prefersReducedMotion) {
+      video.removeAttribute("autoplay");
+    } else {
+      video.autoplay = true;
+      video.setAttribute("autoplay", "");
+      const tryPlay = () => video.play().catch(() => {});
+      tryPlay();
+      // Some iOS builds defer autoplay until the tab is interactive.
+      document.addEventListener("visibilitychange", tryPlay, { passive: true });
+      window.addEventListener("touchstart", tryPlay, { once: true, passive: true });
+    }
 
     (function tick() {
       const p = scrollProgress();
