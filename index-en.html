@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CarAI — Collector Intelligence: the app for car collectors. Digital portfolio, CarAI Vision to identify and estimate the value of any car, market intelligence and PDF reports." />
-  <meta name="theme-color" content="#05070e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>CarAI — Know what a car is worth before you pay</title>
+  <meta name="description" content="CarAI identifies any car from a few photos and gives you its fair market price, its real cost of ownership and arguments to negotiate. Buy used without getting ripped off." />
+  <meta name="theme-color" content="#060b18" />
   <meta name="author" content="CarAI" />
   <link rel="canonical" href="https://joincarai.com/index-en.html" />
-  <title>CarAI — Your collection's value, always clear</title>
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
@@ -15,398 +15,372 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="es_ES" />
   <meta property="og:url" content="https://joincarai.com/index-en.html" />
-  <meta property="og:title" content="CarAI — Collector Intelligence" />
-  <meta property="og:description" content="Identify and estimate the value of any car with CarAI Vision, bring your collection together and track its evolution with market data." />
-  <meta property="og:image" content="https://joincarai.com/assets/og-cover.jpg" />
+  <meta property="og:title" content="CarAI — Know what it's worth. Before you pay." />
+  <meta property="og:description" content="Fair market price, real cost of ownership and negotiation arguments for any car. Free to start on the App Store." />
+  <meta property="og:image" content="https://joincarai.com/assets/og-cover-en.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="CarAI — car collecting with market intelligence" />
+  <meta property="og:image:alt" content="CarAI — valuation of a Porsche 911 in the app: estimated €70,000" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CarAI — Collector Intelligence" />
-  <meta name="twitter:description" content="Identify and estimate the value of any car, bring your collection together and track its evolution with market data." />
-  <meta name="twitter:image" content="https://joincarai.com/assets/og-cover.jpg" />
+  <meta name="twitter:title" content="CarAI — Know what it's worth. Before you pay." />
+  <meta name="twitter:description" content="Fair market price, real cost of ownership and negotiation arguments for any car." />
+  <meta name="twitter:image" content="https://joincarai.com/assets/og-cover-en.jpg" />
 
-  <link rel="icon" href="assets/logo.png" />
-  <link rel="apple-touch-icon" href="assets/logo.png" />
+  <link rel="icon" href="assets/brand/logo-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/brand/logo-64.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/brand/logo-180.png" />
   <link rel="alternate" hreflang="es" href="https://joincarai.com/" />
   <link rel="alternate" hreflang="en" href="https://joincarai.com/index-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://joincarai.com/" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/screens/vision-6.webp" type="image/webp" fetchpriority="high" />
+  <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="style.css" />
+  <script type="module" src="main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#top">Skip to content</a>
+  <a class="skip-link" href="#content">Skip to content</a>
 
-  <!-- Nav -->
-  <header class="nav">
-    <a class="nav__brand" href="#top" aria-label="CarAI — home">
-      <img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" />
-      CarAI
-    </a>
-    <nav class="nav__links" aria-label="Main">
-      <a href="#features">Features</a>
-      <a href="#vision">CarAI Vision</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#download" class="nav__cta">Download</a>
-      <a class="lang-switch" href="index.html" onclick="sessionStorage.setItem('carai-force-es','1')" aria-label="Cambiar a español">ES</a>
-    </nav>
+  <!-- Nav (N10 · bar that morphs into a floating pill on scroll) -->
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="CarAI — home">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="32" height="32" alt="" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#how-it-works">How it works</a>
+        <a href="#enthusiasts">Enthusiasts</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__lang" href="index.html" hreflang="es" lang="es" data-lang-switch="es" aria-label="Cambiar a español">ES</a>
+        <a class="btn btn--ink btn--sm" href="https://apps.apple.com/us/app/carai/id6781012726">Download</a>
+      </div>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero__inner">
-      <img class="hero__appicon" src="assets/logo.png" alt="CarAI app icon" />
-      <p class="hero__eyebrow">The app for car collectors</p>
-      <h1 class="hero__title">
-        Your collection's value,<br /><span class="grad">always clear.</span>
-      </h1>
-      <p class="hero__sub">
-        CarAI brings together your portfolio, CarAI Vision and market intelligence
-        in one app. Know what your collection is worth today — and where it's heading.
-      </p>
-      <div class="stores" id="download">
-        <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726" aria-label="Download on the App Store">
-          <img src="assets/appstore-badge.png" alt="Download on the App Store" />
-        </a>
-      </div>
-      <p class="hero__note">Your first complete valuation, free · CarAI Vision free — up to 10 scans/day</p>
-    </div>
-    <div class="hero__cue" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="hero__cue-line"></div>
-    </div>
-  </section>
+  <main id="content">
 
-  <!-- SCROLL ANIMATION -->
-  <section class="stage" id="story" aria-label="Scroll-driven product animation">
-    <div class="stage__pin">
-      <div class="stage__canvas" id="stageCanvas"></div>
-      <div class="stage__overlay">
-        <div class="cap" data-from="0.02" data-to="0.30">
-          <h2>Your garage, in numbers.</h2>
-          <p>Every car in your collection, with its estimated value and how it's evolving.</p>
-        </div>
-        <div class="cap" data-from="0.34" data-to="0.62">
-          <h2>What's that car? Point and find out — free.</h2>
-          <p>CarAI Vision identifies make, model and generation instantly. Value it with a Key whenever you're ready.</p>
-        </div>
-        <div class="cap" data-from="0.66" data-to="0.96">
-          <h2>Decide with data, not gut feeling.</h2>
-          <p>Value history and PDF dossiers for every car that matters to you.</p>
-        </div>
-      </div>
-      <div class="stage__progress" aria-hidden="true"><span id="stageBar"></span></div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="features" id="features">
-    <div class="feature">
-      <div class="feature__text">
-        <p class="feature__kicker">My Collection</p>
-        <h3>Your entire collection, with its estimated value.</h3>
-        <p>CarAI brings every car together in a portfolio that updates with market
-          data. See the estimated total value of your garage and each model, with
-          its level of interest and how it evolves.</p>
-      </div>
-      <div class="feature__media">
-        <img class="screen" src="assets/screens/mi-coleccion.jpg" alt="CarAI My Collection screen: total value of €456,000 and individual car cards with their change" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="feature feature--reverse">
-      <div class="feature__text">
-        <p class="feature__kicker">Collector Intelligence</p>
-        <h3>Three scenarios for every decision.</h3>
-        <p>Conservative, realistic and optimistic: CarAI projects future value, net profit,
-          ROI and annualised return — and closes with its own conclusion for each car.</p>
-      </div>
-      <div class="feature__media">
-        <img class="screen" src="assets/screens/collector-intelligence.jpg" alt="Collector Intelligence screen: conservative, realistic and optimistic scenarios with ROI and CarAI's conclusion" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="feature__text">
-        <p class="feature__kicker">Ownership Intelligence</p>
-        <h3>What each car truly costs.</h3>
-        <p>Annual and monthly costs with a real breakdown: fuel, maintenance, depreciation,
-          insurance and contingencies. So enjoyment never comes with surprises.</p>
-      </div>
-      <div class="feature__media">
-        <img class="screen" src="assets/screens/ownership-intelligence.jpg" alt="Ownership Intelligence screen: annual cost of €26,000 broken down by category" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURE GRID -->
-  <section class="grid-feats" aria-label="Everything CarAI does">
-    <div class="grid-feats__head">
-      <h2>Everything you need, in one app.</h2>
-      <p>From your first valuation to the report that closes the deal.</p>
-    </div>
-    <ul class="cards">
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg>
-        </span>
-        <h3>Unlimited portfolio</h3>
-        <p>Add all your cars and see the total value of your collection at a glance.</p>
-      </li>
-      <li class="card card--vision">
-        <span class="card__tag">Freemium</span>
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M4 12h16"/></svg>
-        </span>
-        <h3>CarAI Vision</h3>
-        <p>Identify any car for free: make, model and generation. Value it whenever you want with a Key.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4M9 13h6M9 17h6"/></svg>
-        </span>
-        <h3>PDF Dossiers</h3>
-        <p>Generate professional reports for each car, ready to share, sell or insure.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-        </span>
-        <h3>Market intelligence</h3>
-        <p>Trends, comparables and full data to understand every valuation.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-9"/><path d="M21 6v5h-5"/></svg>
-        </span>
-        <h3>Value history</h3>
-        <p>Track how your collection evolves over time, with detailed reports.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M12 8l1.6 2.4L16 12l-2.4 1.6L12 16l-1.6-2.4L8 12l2.4-1.6z"/></svg>
-        </span>
-        <h3>Discover</h3>
-        <p>A different car every day: its story and why it left a mark on the automotive world.</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- CARAI VISION — step by step -->
-  <section class="vision" id="vision" aria-label="How CarAI Vision works">
-    <div class="vision__head">
-      <p class="feature__kicker">CarAI Vision · Freemium</p>
-      <h2>Scan any car. <span class="grad">Value it instantly.</span></h2>
-      <p>Point your camera at any car on the street and CarAI Vision identifies
-        and values it in seconds. Here's how it works, step by step.</p>
-    </div>
-    <ol class="vsteps">
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">01</span>
-          <img class="screen" src="assets/screens/vision-1.jpg" alt="CarAI Vision scanning: capturing front, rear and side views of the car" loading="lazy" />
-        </div>
-        <h3>Scan</h3>
-        <p>Take 3–5 photos from different angles; the app guides you shot by shot.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">02</span>
-          <img class="screen" src="assets/screens/vision-2.jpg" alt="CarAI Vision analysing: detecting the vehicle silhouette" loading="lazy" />
-        </div>
-        <h3>Analyse</h3>
-        <p>The AI detects the silhouette, headlights and body lines.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">03</span>
-          <img class="screen" src="assets/screens/vision-3.jpg" alt="CarAI Vision at 88%: cross-referencing matches and identifying the generation" loading="lazy" />
-        </div>
-        <h3>Recognise</h3>
-        <p>Cross-references thousands of matches to nail the exact generation.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">04</span>
-          <img class="screen" src="assets/screens/vision-4.jpg" alt="CarAI Vision: vehicle detected — Porsche 911 (993) Carrera at 98% confidence" loading="lazy" />
-        </div>
-        <h3>Identify</h3>
-        <p>Porsche 911 (993) Carrera at 98% confidence. Refine the year if you know it.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">05</span>
-          <img class="screen" src="assets/screens/vision-5.jpg" alt="CarAI Vision generating the professional market analysis" loading="lazy" />
-        </div>
-        <h3>Market analysis</h3>
-        <p>Generates a professional analysis with real market data.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">06</span>
-          <img class="screen" src="assets/screens/vision-6.jpg" alt="CarAI Vision result: estimated value €70,000, range, reliability and collectible potential" loading="lazy" />
-        </div>
-        <h3>Value</h3>
-        <p>Estimated value, range, reliability and collectible potential. In seconds.</p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- GARAGE CARD + DOSSIER -->
-  <section class="showcase" aria-label="Garage Card and analytical dossier">
-    <div class="showcase__item">
-      <div class="showcase__media">
-        <img class="screen" src="assets/screens/garage-card.jpg" alt="CarAI Garage Card: collector profile card with score and car collection" loading="lazy" />
-      </div>
-      <div class="showcase__text">
-        <p class="feature__kicker">Garage Card</p>
-        <h3>Share your garage.</h3>
-        <p>A shareable card with your collector profile, your score and the
-          cars in your collection.</p>
-      </div>
-    </div>
-    <div class="showcase__item">
-      <div class="showcase__media">
-        <img class="doc" src="assets/screens/dossier-preview.jpg" alt="CarAI analytical dossier cover for a 2011 Mercedes-Benz SLS AMG, valuation €205,000" loading="lazy" />
-      </div>
-      <div class="showcase__text">
-        <p class="feature__kicker">Analytical Dossier</p>
-        <h3>A professional PDF report.</h3>
-        <p>Full valuation, scenarios and history for each car — ready to
-          sell, insure or document your collection.</p>
-        <a class="btn btn--ghost" href="assets/dossier-carai-ejemplo.pdf" target="_blank" rel="noopener">View sample dossier (PDF) ↓</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section class="pricing" id="pricing">
-    <div class="pricing__head">
-      <p class="feature__kicker">Pricing</p>
-      <h2>Your first complete valuation, free.</h2>
-      <p class="pricing__sub">Pay only when you need it. Or go Collector and drive without limits.</p>
-    </div>
-
-    <div class="plans">
-      <!-- Free -->
-      <article class="plan">
-        <h3 class="plan__name">Free</h3>
-        <p class="plan__price"><strong>€0</strong></p>
-        <p class="plan__desc">Discover what CarAI can really do.</p>
-        <a href="#download" class="btn btn--ghost plan__cta">Download free</a>
-        <ul class="plan__list">
-          <li><strong>1 complete analysis</strong> free, for life</li>
-          <li>CarAI Vision · free identification, up to 10 scans/day</li>
-          <li>1 locked analysis every 90 days</li>
-          <li>Save your valued car to your garage</li>
-          <li>PDF with 'SAMPLE' watermark</li>
-        </ul>
-      </article>
-
-      <!-- Keys (featured) -->
-      <article class="plan plan--featured">
-        <span class="plan__badge">Most popular</span>
-        <h3 class="plan__name">Keys 🔑</h3>
-        <div class="plan__keys">
-          <div class="plan__key-row">
-            <span class="plan__key-price">€4.99</span>
-            <span class="plan__key-label">· 1 Key</span>
-          </div>
-          <div class="plan__key-row plan__key-row--deal">
-            <span class="plan__key-price">€9.99</span>
-            <span class="plan__key-label">· 3 Keys &nbsp;<em>−33%</em></span>
-          </div>
-        </div>
-        <p class="plan__desc">No subscription. Each Key unlocks a full analysis.</p>
-        <a href="#download" class="btn btn--primary plan__cta">Get Keys</a>
-        <ul class="plan__list">
-          <li>Complete analysis with watermark-free PDF</li>
-          <li>Fair price + real marketplace comparables</li>
-          <li>Personalised negotiation arguments</li>
-          <li>Historical value chart</li>
-          <li>Keys never expire</li>
-        </ul>
-        <p class="plan__legal">* Indicative price; final price set by your app store.</p>
-      </article>
-
-      <!-- Collector -->
-      <article class="plan">
-        <h3 class="plan__name">CarAI Collector</h3>
-        <p class="plan__price">
-          <strong>€14.99</strong>
-          <span class="plan__per">/mo</span>
+    <!-- HERO (H2 · split: copy left, real screens right) -->
+    <section class="hero" id="top">
+      <div class="hero__copy">
+        <h1 class="hero__title">Know what it's worth.<br /> Before you pay.</h1>
+        <p class="hero__lede">
+          CarAI identifies any car from a few photos and tells you its fair market price,
+          what it will really cost you and how to negotiate it. So nobody takes you for a ride.
         </p>
-        <p class="plan__save-note">or €119.99/year · save 4 months</p>
-        <p class="plan__desc">For collectors and professionals. Everything, without limits.</p>
-        <a href="#download" class="btn btn--ghost plan__cta">Start Collector</a>
-        <ul class="plan__list">
-          <li>Unlimited analyses without Keys</li>
-          <li>CarAI Vision <strong>unlimited</strong></li>
-          <li>Unlimited portfolio and collection</li>
-          <li>Full market intelligence</li>
-          <li>ROI Calculator</li>
-          <li>Unlimited watermark-free PDF dossiers</li>
-        </ul>
-      </article>
-    </div>
+        <div class="hero__actions" id="download">
+          <span class="anchor" id="descargar"></span>
+          <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726">
+            <img src="assets/appstore-badge.png" width="162" height="54" alt="Download on the App Store" />
+          </a>
+          <a class="link-arrow" href="#how-it-works">How it works <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="hero__note">Free to start: your first full valuation and up to 10 identifications a day.</p>
+      </div>
 
-    <!-- FAQ -->
-    <div class="faq">
-      <h3 class="faq__title">Frequently asked questions</h3>
-      <dl class="faq__list">
-        <div class="faq__item">
-          <dt>What is a Key?</dt>
-          <dd>A Key unlocks a complete analysis: exact fair price, real marketplace comparables, personalised negotiation arguments, historical value chart and a watermark-free PDF dossier.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>Do Keys expire?</dt>
-          <dd>No. Your Keys are yours forever. Use them whenever you need, with no expiry date.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>What's included in a complete analysis?</dt>
-          <dd>Exact fair price with market range, real marketplace comparables, car-specific negotiation arguments, historical value chart and a professional PDF dossier.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>What is a locked analysis?</dt>
-          <dd>The analysis runs for real, but the data appears blurred. You can see your answer exists — just one Key away. A new one unlocks every 90 days.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>Any sign-up gifts?</dt>
-          <dd>Yes. When you create your account you get a free valuation gift (the car's fair price, without the full report). And every year on your birthday 🎂, a free Key.</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
+      <div class="hero__visual">
+        <figure class="screen screen--back">
+          <picture>
+            <source srcset="assets/screens/vision-4.webp" type="image/webp" />
+            <img src="assets/screens/vision-4.jpg" width="900" height="1951" alt="CarAI Vision has detected a Porsche 911 (993) Carrera with a 98% match" fetchpriority="high" />
+          </picture>
+        </figure>
+        <figure class="screen screen--front">
+          <picture>
+            <source srcset="assets/screens/vision-6.webp" type="image/webp" />
+            <img src="assets/screens/vision-6.jpg" width="900" height="1951" alt="CarAI result: estimated market value €70,000, range €64,000 to €76,000, high reliability" fetchpriority="high" />
+          </picture>
+        </figure>
+        <p class="hero__chip" aria-hidden="true">
+          <span class="hero__chip-label">Market range</span>
+          <span class="hero__chip-value">€64,000 – €76,000</span>
+        </p>
+      </div>
+    </section>
 
-  <!-- FINAL CTA -->
-  <section class="cta">
-    <h2>Your collection deserves to know its worth.</h2>
-    <p>Download CarAI and get your first complete valuation free.</p>
-    <div class="stores stores--center">
-      <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726" aria-label="Download on the App Store">
-        <img src="assets/appstore-badge.png" alt="Download on the App Store" />
-      </a>
-    </div>
-    <p class="cta__soon">Android coming soon.</p>
-  </section>
+    <!-- Verifiable facts, no invented metrics -->
+    <ul class="facts" aria-label="App facts">
+      <li><strong>App Store</strong> iPhone · iOS 15 or later</li>
+      <li><strong>4 languages</strong> English, Español, Français, Deutsch</li>
+      <li><strong>No subscription required</strong> Pay only for the analysis you need</li>
+      <li><strong>Market data</strong> Estimates from real listings</li>
+    </ul>
 
+    <!-- SCROLL ANIMATION — loads only when near; plays forward on scroll down, backwards on scroll up -->
+    <section class="stage" id="story" aria-label="Scroll-driven CarAI animation" data-stage>
+      <span class="anchor" id="vision"></span>
+      <div class="stage__pin">
+        <div class="stage__canvas" data-stage-mount>
+          <img class="stage__poster" src="assets/stage-poster.webp" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="stage__overlay">
+          <div class="cap" data-from="0.02" data-to="0.32">
+            <h2>Any car.<br /> Its real price.</h2>
+            <p>From the hatchback at the dealer to the classic you spot on the street.</p>
+          </div>
+          <div class="cap" data-from="0.36" data-to="0.64">
+            <h2>Point, scan, know.</h2>
+            <p>CarAI Vision recognises make, model and generation in seconds. Free.</p>
+          </div>
+          <div class="cap" data-from="0.68" data-to="0.97">
+            <h2>Decide on data, not on gut feeling.</h2>
+            <p>Fair price, comparables and real cost before you sign anything.</p>
+          </div>
+        </div>
+        <div class="stage__progress" aria-hidden="true"><span data-stage-bar></span></div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS (F2 · sticky copy + passing screens) -->
+    <section class="journey" id="how-it-works" aria-labelledby="journey-title">
+      <span class="anchor" id="features"></span>
+      <header class="section-head">
+        <h2 id="journey-title">From photo to deal,<br /> in four questions.</h2>
+        <p>The same ones you ask yourself in front of a used car. CarAI answers each one with data.</p>
+      </header>
+
+      <ol class="journey__steps">
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">01</span>
+            <h3>Which car is it, exactly?</h3>
+            <p>Take 3 to 5 photos. CarAI Vision identifies make, model and generation, and lets you
+              fine-tune the year if you know it. Free, up to 10 scans a day.</p>
+          </div>
+          <figure class="screen step__screen">
+            <picture>
+              <source srcset="assets/screens/vision-1.webp" type="image/webp" />
+              <img src="assets/screens/vision-1.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="CarAI Vision guiding the capture: front, rear and side views of the car" />
+            </picture>
+          </figure>
+        </li>
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">02</span>
+            <h3>What is it really worth?</h3>
+            <p>Estimated market value, with its minimum and maximum range, how reliable the estimate is
+              and the listings it's based on. If they ask for more, you'll know before you talk.</p>
+          </div>
+          <figure class="screen step__screen">
+            <picture>
+              <source srcset="assets/screens/vision-6.webp" type="image/webp" />
+              <img src="assets/screens/vision-6.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Estimated market value of €70,000 with a range of €64,000 to €76,000" />
+            </picture>
+          </figure>
+        </li>
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">03</span>
+            <h3>What will it cost me to own?</h3>
+            <p>Fuel, maintenance, wear, insurance and contingencies. The annual and monthly cost,
+              broken down, before you commit to anything.</p>
+          </div>
+          <figure class="screen step__screen">
+            <picture>
+              <source srcset="assets/screens/ownership-intelligence.webp" type="image/webp" />
+              <img src="assets/screens/ownership-intelligence.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Ownership cost: €26,000 a year, €2,167 a month, broken down by category" />
+            </picture>
+          </figure>
+        </li>
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">04</span>
+            <h3>How do I negotiate?</h3>
+            <p>The full analysis adds real comparables from listing sites, negotiation arguments for
+              that specific car and a PDF dossier ready to show.</p>
+            <a class="link-arrow" href="assets/dossier-carai-ejemplo.pdf" target="_blank" rel="noopener">See a sample dossier (PDF) <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure class="doc step__screen">
+            <picture>
+              <source srcset="assets/screens/dossier-preview.webp" type="image/webp" />
+              <img src="assets/screens/dossier-preview.jpg" width="820" height="1159" loading="lazy" decoding="async" alt="Cover of the PDF dossier for a 2011 Mercedes-Benz SLS AMG, valued at €205,000" />
+            </picture>
+          </figure>
+        </li>
+      </ol>
+    </section>
+
+    <!-- COMING SOON — in development, not yet released -->
+    <section class="soon" id="coming-soon" aria-labelledby="soon-title">
+      <header class="section-head section-head--row">
+        <h2 id="soon-title">Next in CarAI.</h2>
+        <p>We're already building it. It will arrive as a free update.</p>
+      </header>
+      <ul class="soon__list">
+        <li>
+          <h3>Paste a listing link</h3>
+          <p>We'll tell you whether the price is good, fair or too high, no typing needed.</p>
+          <span class="tag">Coming soon</span>
+        </li>
+        <li>
+          <h3>History and mileage</h3>
+          <p>Upload the car's documents and spot tampered odometers.</p>
+          <span class="tag">Coming soon</span>
+        </li>
+        <li>
+          <h3>Invite and earn analyses</h3>
+          <p>Share CarAI with your friends and get full analyses for free.</p>
+          <span class="tag">Coming soon</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- FOR ENTHUSIASTS — the collector tools, now the advanced ceiling -->
+    <section class="enthusiasts" id="enthusiasts" aria-labelledby="enth-title">
+      <header class="section-head">
+        <h2 id="enth-title">And if cars are your thing.</h2>
+        <p>For anyone who owns more than one, or dreams of it: your garage with its value, future
+          scenarios for every car and a card to share it.</p>
+      </header>
+      <div class="gallery">
+        <figure class="gallery__item">
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/mi-coleccion.webp" type="image/webp" />
+              <img src="assets/screens/mi-coleccion.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="My Collection: total garage value and a card for each car with its change" />
+            </picture>
+          </div>
+          <figcaption><strong>Your garage, in numbers.</strong> The estimated value of each car and of the whole collection, always up to date.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/collector-intelligence.webp" type="image/webp" />
+              <img src="assets/screens/collector-intelligence.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Collector Intelligence: conservative, realistic and optimistic scenarios with ROI" />
+            </picture>
+          </div>
+          <figcaption><strong>Three scenarios.</strong> Conservative, realistic and optimistic, with ROI and annualised return.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/garage-card.webp" type="image/webp" />
+              <img src="assets/screens/garage-card.jpg" width="900" height="1600" loading="lazy" decoding="async" alt="Garage Card: collector card with score and list of cars" />
+            </picture>
+          </div>
+          <figcaption><strong>Garage Card.</strong> Your collector profile, ready to share.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+      <header class="section-head section-head--center">
+        <h2 id="pricing-title">Start free.<br /> Pay only if you need to.</h2>
+        <p>No commitment. Keys never expire.</p>
+      </header>
+
+      <div class="plans">
+        <article class="plan">
+          <h3 class="plan__name">Free</h3>
+          <p class="plan__price"><span class="num">€0</span></p>
+          <p class="plan__desc">To really get to know CarAI.</p>
+          <ul class="plan__list">
+            <li><strong>1 full analysis</strong> free, for life</li>
+            <li>CarAI Vision: up to 10 identifications a day</li>
+            <li>1 blurred analysis every 90 days</li>
+            <li>Save your valued car in the garage</li>
+            <li>PDF with "SAMPLE" watermark</li>
+          </ul>
+          <a class="btn btn--line plan__cta" href="https://apps.apple.com/us/app/carai/id6781012726">Download free</a>
+        </article>
+
+        <article class="plan plan--featured">
+          <p class="plan__flag">No subscription</p>
+          <h3 class="plan__name">Keys</h3>
+          <div class="plan__keys">
+            <p><span class="num">€4.99</span> <span class="plan__unit">1 key</span></p>
+            <p><span class="num num--lg">€9.99</span> <span class="plan__unit">3 keys</span> <span class="save">−33%</span></p>
+          </div>
+          <p class="plan__desc">Each key unlocks one full analysis.</p>
+          <ul class="plan__list">
+            <li>Full analysis with watermark-free PDF</li>
+            <li>Fair price and real listing comparables</li>
+            <li>Personalised negotiation arguments</li>
+            <li>Value history chart</li>
+            <li>Keys never expire</li>
+          </ul>
+          <a class="btn btn--ink plan__cta" href="https://apps.apple.com/us/app/carai/id6781012726">Get keys</a>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan__name">CarAI Collector</h3>
+          <p class="plan__price"><span class="num">€14.99</span> <span class="plan__unit">/ month</span></p>
+          <p class="plan__desc">or €119.99 a year, save 4 months.</p>
+          <ul class="plan__list">
+            <li>Unlimited analyses, no keys needed</li>
+            <li>CarAI Vision <strong>unlimited</strong></li>
+            <li>Unlimited garage and collection</li>
+            <li>Full market intelligence</li>
+            <li>ROI calculator</li>
+            <li>Unlimited watermark-free PDF dossiers</li>
+          </ul>
+          <a class="btn btn--line plan__cta" href="https://apps.apple.com/us/app/carai/id6781012726">Start Collector</a>
+        </article>
+      </div>
+      <p class="pricing__legal">Indicative prices for Spain; the final price is set by your app store.</p>
+    </section>
+
+    <!-- FAQ (native disclosure) -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <div class="faq__list">
+        <details>
+          <summary>Are CarAI valuations official appraisals?</summary>
+          <p>No. They are estimates based on available market data, designed so you arrive at the purchase or the negotiation informed. They don't replace a professional appraisal or a mechanical inspection.</p>
+        </details>
+        <details>
+          <summary>What is a key?</summary>
+          <p>A key unlocks a full analysis: fair price with market range, real comparables from listing sites, personalised negotiation arguments, a value history chart and a watermark-free PDF dossier.</p>
+        </details>
+        <details>
+          <summary>Do keys expire?</summary>
+          <p>No. They're yours forever. Use them whenever you need them.</p>
+        </details>
+        <details>
+          <summary>What is the blurred analysis?</summary>
+          <p>The analysis really runs, but the figures appear blurred: you see that your answer exists and that it's one key away. A new one recharges every 90 days.</p>
+        </details>
+        <details>
+          <summary>Are there sign-up gifts?</summary>
+          <p>Yes. When you create your account you get a gift valuation (the car's fair price, without the full report). And every year, on your birthday, a free key.</p>
+        </details>
+        <details>
+          <summary>Is there an Android version?</summary>
+          <p>Not yet. For now CarAI is available on the App Store for iPhone. The Android version is coming soon.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (Ft5 · closing statement) -->
   <footer class="foot">
-    <div class="foot__row">
-      <span class="foot__brand"><img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI</span>
-      <nav class="foot__links" aria-label="Legal links">
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
+    <p class="foot__line">Don't get taken for a ride.</p>
+    <div class="foot__cta">
+      <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726">
+        <img src="assets/appstore-badge.png" width="162" height="54" alt="Download on the App Store" loading="lazy" />
+      </a>
+      <span class="foot__soon">Android, coming soon.</span>
+    </div>
+    <div class="foot__meta">
+      <a class="brand" href="#top" aria-label="CarAI — back to top">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="28" height="28" alt="" loading="lazy" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="foot__links" aria-label="Footer links">
         <a href="support.html">Support</a>
         <a href="terms.html">Terms</a>
         <a href="privacy.html">Privacy</a>
+        <a href="mailto:support@joincarai.com">support@joincarai.com</a>
       </nav>
     </div>
-    <p class="foot__disclaimer">CarAI valuations are estimates based on available market data, not professional appraisals.</p>
-    <span class="foot__copy">© 2026 CarAI · For those who collect with their head. · Support: <a href="mailto:support@joincarai.com">support@joincarai.com</a></span>
+    <p class="foot__fine">CarAI valuations are estimates based on available market data, not professional appraisals. © 2026 CarAI.</p>
   </footer>
-
-  <script type="module" src="main.js"></script>
 </body>
 </html>

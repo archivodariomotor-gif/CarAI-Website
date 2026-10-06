@@ -5,32 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index,follow" />
   <meta name="description" content="Soporte de CarAI: escríbenos a support@joincarai.com con cualquier duda, problema o sugerencia sobre la app." />
-  <meta name="theme-color" content="#05070e" />
+  <meta name="theme-color" content="#060b18" />
   <title>Soporte — CarAI</title>
-  <link rel="icon" href="assets/logo.png" />
+  <link rel="icon" href="assets/brand/logo-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/brand/logo-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="style.css" />
+  <script type="module" src="main.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <header class="nav">
-    <a class="nav__brand" href="index.html" aria-label="CarAI — inicio">
-      <img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI
-    </a>
-    <nav class="nav__links" aria-label="Principal">
-      <a href="index.html#features">Funciones</a>
-      <a href="index.html#precios">Precios</a>
-      <a href="index.html#descargar" class="nav__cta">Descargar</a>
-      <a class="lang-switch" href="support.html" aria-label="Switch to English">EN</a>
-    </nav>
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="brand" href="index.html" aria-label="CarAI — inicio">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="32" height="32" alt="" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="index.html#como-funciona">Cómo funciona</a>
+        <a href="index.html#precios">Precios</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__lang" href="support.html" hreflang="en" lang="en" data-lang-switch="en" aria-label="Switch to English">EN</a>
+        <a class="btn btn--ink btn--sm" href="https://apps.apple.com/us/app/carai/id6781012726">Descargar</a>
+      </div>
+    </div>
   </header>
 
   <main class="legal" id="contenido">
     <div class="legal__header">
-      <p class="feature__kicker">Soporte</p>
+      <p class="legal__kicker">Soporte</p>
       <h1>¿En qué podemos ayudarte?</h1>
       <p class="legal__updated">Solemos responder en 1–2 días laborables.</p>
     </div>
@@ -68,18 +77,20 @@
     </section>
   </main>
 
-  <footer class="foot">
-    <div class="foot__row">
-      <span class="foot__brand"><img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI</span>
-      <nav class="foot__links" aria-label="Enlaces legales">
-        <a href="index.html#features">Funciones</a>
-        <a href="index.html#precios">Precios</a>
+  <footer class="foot foot--compact">
+    <div class="foot__meta">
+      <a class="brand" href="index.html" aria-label="CarAI — inicio">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="28" height="28" alt="" loading="lazy" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="foot__links" aria-label="Enlaces del pie">
         <a href="soporte.html" aria-current="page">Soporte</a>
         <a href="terminos.html">Términos</a>
         <a href="privacidad.html">Privacidad</a>
+        <a href="mailto:support@joincarai.com">support@joincarai.com</a>
       </nav>
     </div>
-    <span class="foot__copy">© 2026 CarAI · Para quienes coleccionan con cabeza.</span>
+    <p class="foot__fine">Las valoraciones de CarAI son estimaciones basadas en datos de mercado disponibles, no tasaciones profesionales. © 2026 CarAI.</p>
   </footer>
 </body>
 </html>
