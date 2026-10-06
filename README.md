@@ -1,55 +1,54 @@
 # CarAI — landing web
 
-Landing de **CarAI — Collector Intelligence**, la app para coleccionistas de
-coches: portfolio digital, **CarAI Vision** (identifica y estima el valor de
-cualquier coche), inteligencia de mercado, informes en PDF y "Descubre". El
-centro de la página es una **animación controlada por scroll** hecha con
-Three.js: la secuencia avanza al bajar y retrocede al subir.
+Landing de **CarAI**: "Sabe lo que vale. Antes de pagar." — la app que identifica cualquier
+coche con unas fotos y da su precio justo de mercado, su coste real y argumentos para
+negociar. Las funciones de coleccionista (garaje, escenarios, Garage Card) aparecen como
+sección "para entusiastas". El centro visual es una **animación controlada por scroll**:
+avanza al bajar y retrocede al subir.
 
 > Las valoraciones de CarAI son **estimaciones** basadas en datos de mercado, no
 > tasaciones profesionales. La copy del sitio refleja ese matiz a propósito.
 
 ## Stack
 
-HTML + CSS + JavaScript (vanilla) con **Three.js alojado en local**
-(`vendor/three.module.js`, sin CDN). Sin build, sin dependencias que instalar —
-funciona sirviendo la carpeta por HTTP.
+HTML + CSS + JavaScript vanilla, **sin dependencias** (Three.js ya no se usa: el render es
+WebGL nativo en `main.js`). Sin build — funciona sirviendo la carpeta por HTTP.
+Sistema de diseño bloqueado en [`design.md`](design.md) + [`tokens.css`](tokens.css).
+Spec Kit: constitución en `.specify/memory/constitution.md`, especificaciones en `specs/`.
 
 ## Cómo funciona la animación
 
-- **Escritorio (`main.js`, path Three.js):** `transition.mp4` se pre-divide en
-  **192 fotogramas WebP** (`frames/`, 2560×1440) — la técnica estilo Apple,
-  mucho más fina de "scrubbear" en ambos sentidos que un `<video>`. La posición
-  de scroll dentro de `.stage` mapea a un índice de fotograma **fraccionario**;
-  el shader **mezcla los dos fotogramas adyacentes** (cross-fade sub-fotograma)
-  con suavizado independiente de la tasa de refresco (`TAU` en `main.js`).
-- **Móvil (`transition-loop.mp4`):** cargar 192 bitmaps decodificados (~2,8 GB)
-  cierra Safari en iOS, así que en móvil se reproduce un **bucle boomerang
-  perfecto** (el clip + su reverso), de forma que **nunca hay corte** en el punto
-  de loop. Las captions siguen igualmente el scroll.
-- **Sin banding (limpieza "de raíz"):** los fotogramas se extraen con el filtro
-  **`deband`** de ffmpeg y el shader añade un **dither triangular en espacio de
-  pantalla** (±1 LSB), que disuelve el banding del degradado oscuro tanto de los
-  fotogramas como de la viñeta CSS. Nada de bloques ni escalones en los negros.
-- **Hero-first:** no hay splash bloqueante. El hero se muestra al instante; solo
-  se espera el fotograma 0 y el resto carga de fondo (hasta que llega cada uno se
-  muestra el más cercano ya cargado, así nada parece roto). `main().catch`
-  revela ante cualquier error.
+- **Carga perezosa:** no se descarga nada de la animación hasta que el visitante hace scroll
+  y el escenario está a menos de ¾ de pantalla. La primera pantalla pesa ~270 KB.
+- **Escritorio:** 192 fotogramas WebP dibujados con un quad WebGL nativo que mezcla los dos
+  fotogramas adyacentes (cross-fade sub-fotograma), con viñeta y **dither triangular** para
+  eliminar el banding. Se usa `frames/1600/` (7 MB) salvo que el lienzo necesite más de
+  1700 px de dispositivo; entonces `frames/` (2560 px, 28 MB). Los fotogramas cargan de
+  grueso a fino (cada 16, 8, 4, 2, 1) para que todo el recorrido sea "scrubbeable" pronto.
+- **Bucle de render inactivo:** solo dibuja si el escenario está en pantalla, la pestaña es
+  visible y el fotograma cambia.
+- **Móvil/táctil:** bucle boomerang `transition-loop.mp4`, `src` asignado al acercarse y
+  pausado fuera de pantalla.
+- **`prefers-reduced-motion`:** solo el fotograma póster; los textos siguen el scroll.
 
 ## Estructura
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` / `index-en.html` | Página ES / EN (auto-redirección por idioma del navegador) |
-| `style.css` | Estilos, tema oscuro, degradado, responsive |
-| `main.js` | Three.js: quad a pantalla completa, shader cover-fit + viñeta + dither, movido por scroll; path de vídeo boomerang en móvil |
-| `frames/` | 192 fotogramas WebP (2560×1440) + `manifest.json` (~28 MB) |
-| `transition.mp4` | Vídeo original 4K (fuente de los fotogramas) |
-| `transition-loop.mp4` | Bucle boomerang 720p para el path móvil |
-| `assets/og-cover.jpg` | Imagen de compartición social (Open Graph, 1200×630) |
-| `assets/logo.png` | **Logo de la app** (icono) |
-| `assets/screens/` | Capturas reales de la app |
-| `terminos.html` · `privacidad.html` · `soporte.html` (+ EN) | Legales y soporte |
+| `index.html` / `index-en.html` | Landing ES / EN (misma estructura; auto-redirección por idioma) |
+| `tokens.css` | Tokens de color, tipografía, espaciado y movimiento (fuente única) |
+| `style.css` | Estilos de todas las páginas (solo usa tokens) |
+| `main.js` | Nav flotante, pasos de "Cómo funciona", escenario WebGL/vídeo perezoso |
+| `design.md` | Sistema de diseño bloqueado (Hallmark) |
+| `frames/` · `frames/1600/` | 192 fotogramas WebP 2560 px y 1600 px + `manifest.json` |
+| `transition.mp4` / `transition-loop.mp4` | Vídeo fuente 4K / bucle móvil 720p |
+| `assets/stage-poster.webp` | Póster del escenario (sin JS, reduced-motion, mientras carga) |
+| `assets/og-cover.jpg` · `og-cover-en.jpg` | Imágenes para compartir (1200×630) |
+| `assets/brand/` | Logo en 32/64/180/512 px |
+| `assets/screens/` | Capturas reales de la app (WebP + JPG de respaldo) |
+| `terminos` · `privacidad` · `soporte` `.html` (+ EN) | Legales y soporte |
+| `specs/001-landing-redesign/` | Spec, plan y tareas de este rediseño (Spec Kit) |
+| `vendor/three.module.js` | Ya no se referencia; se puede borrar |
 
 ## Ejecutar
 
@@ -76,6 +75,9 @@ for f in /tmp/fr/frame_*.png; do
   cwebp -quiet -q 90 -m 6 -sharp_yuv "$f" -o "frames/$(basename "$f" .png).webp"
 done
 # Actualiza "count" en frames/manifest.json si cambia el nº de fotogramas.
+# Versión ligera 1600 px:
+mkdir -p frames/1600
+for f in frames/frame_*.webp; do cwebp -quiet -q 80 -resize 1600 900 "$f" -o "frames/1600/$(basename "$f")"; done
 
 # 2) Bucle boomerang móvil (720p, sin corte de loop, faststart)
 ffmpeg -i transition.mp4 -filter_complex \
@@ -84,7 +86,7 @@ ffmpeg -i transition.mp4 -filter_complex \
  -movflags +faststart transition-loop.mp4
 ```
 
-Velocidad del scrub: `.stage { height }` en `style.css` (más alto = más lento).
+Velocidad del scrub: `main > .stage { height }` en `style.css` (más alto = más lento).
 Suavidad del seguimiento: `TAU` en `main.js` (menor = más directo).
 
 ## Precios (ya cargados)
@@ -102,6 +104,6 @@ iOS 15+. Ficha: <https://apps.apple.com/us/app/carai/id6781012726>.
 
 ## Accesibilidad
 
-Tema oscuro nativo, contraste cuidado, `alt` en imágenes, `aria-label` en
+Tema oscuro nativo, contraste AA verificado (texto ≥ 6,4:1), FAQ con `<details>` nativo, `alt` en imágenes, `aria-label` en
 iconos/botones, navegación por teclado con `:focus-visible`, enlace "saltar al
 contenido" y respeto a `prefers-reduced-motion` (en móvil el vídeo se congela).

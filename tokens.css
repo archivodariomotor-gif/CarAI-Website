@@ -1,0 +1,86 @@
+/* Hallmark · tokens · theme: custom "CarAI night" · paper-band: dark · display: geometric-sans (Geist) · accent-hue: cool (258)
+ * Locked by design.md — every page references these names; no raw colour values elsewhere.
+ */
+:root {
+  color-scheme: dark;
+
+  /* ── Colour (OKLCH, hue 258 = the app's CarAI blue family) ── */
+  --color-paper:      oklch(14.5% 0.028 262);   /* page canvas ≈ app bgPage   */
+  --color-paper-2:    oklch(18.5% 0.032 258);   /* raised surface ≈ app bgCard */
+  --color-paper-3:    oklch(23% 0.034 256);     /* hover / highest surface    */
+  --color-rule:       oklch(30% 0.030 255);     /* hairlines ≈ app border     */
+  --color-rule-strong:oklch(52% 0.030 255);  /* ≥ 3:1 for control boundaries */
+  --color-ink:        oklch(96.5% 0.006 258);   /* primary text               */
+  --color-ink-2:      oklch(80% 0.022 255);     /* secondary text             */
+  --color-muted:      oklch(68% 0.022 255);     /* tertiary text, ≥ 4.5:1     */
+  --color-accent:     oklch(68% 0.165 258);     /* CarAI blue, lifted for dark */
+  --color-accent-ink: oklch(78% 0.120 258);     /* accent used as text        */
+  --color-accent-wash:oklch(26% 0.070 260);     /* accent tint surface ≈ accentBg */
+  --color-good:       oklch(80% 0.140 165);     /* fair price / saving        */
+  --color-good-wash:  oklch(25% 0.045 165);
+  --color-bad:        oklch(72% 0.160 22);      /* overpriced                 */
+  --color-on-ink:     oklch(17% 0.028 262);     /* text on light (ink) buttons */
+  --color-focus:      oklch(78% 0.140 258);
+  --color-scrim:      oklch(14.5% 0.028 262 / 0.72);
+  --color-scrim-soft: oklch(14.5% 0.028 262 / 0.0);
+  --color-shadow:     oklch(6% 0.02 262 / 0.55);
+
+  /* ── Type ── */
+  --font-display: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body:    "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs:   0.8125rem;                                   /* 13 */
+  --text-sm:   0.9375rem;                                   /* 15 */
+  --text-base: 1.0625rem;                                   /* 17 */
+  --text-lg:   clamp(1.125rem, 0.9rem + 0.6vw, 1.3125rem);  /* 18 → 21 */
+  --text-2xl:  clamp(1.5rem, 1.1rem + 1.4vw, 2.125rem);     /* 24 → 34 */
+  --text-4xl:  clamp(2.125rem, 1.3rem + 3.2vw, 3.75rem);    /* 34 → 60 */
+  --text-display: clamp(2.75rem, 1.4rem + 5.4vw, 5.5rem);   /* 44 → 88 */
+
+  --weight-body: 400;
+  --weight-strong: 600;
+  --weight-display: 700;
+  --tracking-display: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-label: 0.06em;
+  --leading-display: 0.98;
+  --leading-body: 1.55;
+
+  /* ── Space (4 pt) ── */
+  --space-3xs: 0.25rem;  /* 4  */
+  --space-2xs: 0.5rem;   /* 8  */
+  --space-xs:  0.75rem;  /* 12 */
+  --space-sm:  1rem;     /* 16 */
+  --space-md:  1.5rem;   /* 24 */
+  --space-lg:  2rem;     /* 32 */
+  --space-xl:  3rem;     /* 48 */
+  --space-2xl: 4.5rem;   /* 72 */
+  --space-3xl: clamp(5rem, 3rem + 7vw, 9rem);
+  --page-gutter: clamp(1rem, 0.4rem + 3vw, 2.5rem);
+  --page-max: 75rem;     /* 1200 */
+  --measure: 34rem;
+
+  /* ── Shape ── */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.375rem;
+  --radius-screen: 2rem;   /* matches iPhone screen corner at display size */
+  --radius-pill: 999px;
+  --rule-hair: 1px;
+
+  /* ── Motion ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-mid: 520ms;
+  --dur-long: 420ms;
+
+  /* ── Layers ── */
+  --z-sticky: 5;
+  --z-nav: 50;
+  --z-skip: 100;
+  --nav-height: 4.5rem;
+}

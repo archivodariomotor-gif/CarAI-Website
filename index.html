@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="CarAI — Collector Intelligence: la app para coleccionistas de coches. Portfolio digital, CarAI Vision para identificar y estimar el valor de cualquier coche, inteligencia de mercado e informes en PDF." />
-  <meta name="theme-color" content="#05070e" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>CarAI — Sabe lo que vale un coche antes de pagar</title>
+  <meta name="description" content="CarAI identifica cualquier coche con unas fotos y te da su precio justo de mercado, su coste real y argumentos para negociar. Compra usado sin que te engañen." />
+  <meta name="theme-color" content="#060b18" />
   <meta name="author" content="CarAI" />
   <link rel="canonical" href="https://joincarai.com/" />
-  <title>CarAI — El valor de tu colección, siempre claro</title>
 
   <!-- Open Graph / redes sociales -->
   <meta property="og:type" content="website" />
@@ -15,32 +15,25 @@
   <meta property="og:locale" content="es_ES" />
   <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:url" content="https://joincarai.com/" />
-  <meta property="og:title" content="CarAI — Collector Intelligence" />
-  <meta property="og:description" content="Identifica y estima el valor de cualquier coche con CarAI Vision, reúne tu colección y sigue su evolución con datos de mercado." />
+  <meta property="og:title" content="CarAI — Sabe lo que vale. Antes de pagar." />
+  <meta property="og:description" content="Precio justo de mercado, coste real y argumentos para negociar cualquier coche. Gratis para empezar en el App Store." />
   <meta property="og:image" content="https://joincarai.com/assets/og-cover.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="CarAI — coleccionismo de coches con inteligencia de mercado" />
+  <meta property="og:image:alt" content="CarAI — valoración de un Porsche 911 en la app: 70.000 € estimados" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CarAI — Collector Intelligence" />
-  <meta name="twitter:description" content="Identifica y estima el valor de cualquier coche, reúne tu colección y sigue su evolución con datos de mercado." />
+  <meta name="twitter:title" content="CarAI — Sabe lo que vale. Antes de pagar." />
+  <meta name="twitter:description" content="Precio justo de mercado, coste real y argumentos para negociar cualquier coche." />
   <meta name="twitter:image" content="https://joincarai.com/assets/og-cover.jpg" />
 
-  <!-- Logo de la app: assets/logo.png (icono cuadrado). Sustitúyelo ahí si cambia. -->
-  <link rel="icon" href="assets/logo.png" />
-  <link rel="apple-touch-icon" href="assets/logo.png" />
+  <link rel="icon" href="assets/brand/logo-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="assets/brand/logo-64.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/brand/logo-180.png" />
   <link rel="alternate" hreflang="es" href="https://joincarai.com/" />
   <link rel="alternate" hreflang="en" href="https://joincarai.com/index-en.html" />
   <link rel="alternate" hreflang="x-default" href="https://joincarai.com/" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Inter = fallback "SF Pro-like" para Windows/Android. En Mac/iOS se usa SF Pro nativo (-apple-system). -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Redirect non-Spanish browsers to the English version -->
+  <!-- Redirige navegadores no hispanohablantes a la versión inglesa -->
   <script>
     (function(){
       var l = (navigator.language || '').toLowerCase();
@@ -50,384 +43,353 @@
     })();
   </script>
 
-  <!-- Three.js alojado en local (sin CDN) para que una conexión lenta no bloquee la animación -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/screens/vision-6.webp" type="image/webp" fetchpriority="high" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#top">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- Navegación -->
-  <header class="nav">
-    <a class="nav__brand" href="#top" aria-label="CarAI — inicio">
-      <img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" />
-      CarAI
-    </a>
-    <nav class="nav__links" aria-label="Principal">
-      <a href="#features">Funciones</a>
-      <a href="#vision">CarAI Vision</a>
-      <a href="#precios">Precios</a>
-      <a href="#descargar" class="nav__cta">Descargar</a>
-      <a class="lang-switch" href="index-en.html" aria-label="Switch to English">EN</a>
-    </nav>
+  <!-- Navegación (N10 · barra que se convierte en píldora flotante al hacer scroll) -->
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="CarAI — inicio">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="32" height="32" alt="" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#entusiastas">Entusiastas</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__lang" href="index-en.html" hreflang="en" lang="en" data-lang-switch="en" aria-label="Switch to English">EN</a>
+        <a class="btn btn--ink btn--sm" href="https://apps.apple.com/us/app/carai/id6781012726">Descargar</a>
+      </div>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero__inner">
-      <img class="hero__appicon" src="assets/logo.png" alt="Icono de la app CarAI" />
-      <p class="hero__eyebrow">La app para coleccionistas de coches</p>
-      <h1 class="hero__title">
-        El valor de tu garaje,<br /><span class="grad">siempre claro.</span>
-      </h1>
-      <p class="hero__sub">
-        CarAI reúne tu portfolio, CarAI Vision y la inteligencia de mercado en una
-        sola app. Sabe cuánto vale tu colección hoy — y hacia dónde va.
-      </p>
+  <main id="contenido">
 
-      <!-- Botón de descarga oficial (App Store). Android: aún no disponible. -->
-      <div class="stores" id="descargar">
-        <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726" aria-label="Descárgalo en el App Store">
-          <img src="assets/appstore-badge.png" alt="Descárgalo en el App Store" />
-        </a>
-      </div>
-      <p class="hero__note">Tu primera tasación completa, gratis · CarAI Vision gratis hasta 10 escaneos/día</p>
-    </div>
-
-    <div class="hero__cue" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="hero__cue-line"></div>
-    </div>
-  </section>
-
-  <!-- ANIMACIÓN POR SCROLL (Three.js — reproduce el vídeo hacia delante al bajar y hacia atrás al subir) -->
-  <section class="stage" id="story" aria-label="Animación del producto controlada por scroll">
-    <div class="stage__pin">
-      <div class="stage__canvas" id="stageCanvas"></div>
-      <div class="stage__overlay">
-        <div class="cap" data-from="0.02" data-to="0.30">
-          <h2>Tu garaje, en cifras.</h2>
-          <p>Cada coche de tu colección, con su valor estimado y su evolución.</p>
-        </div>
-        <div class="cap" data-from="0.34" data-to="0.62">
-          <h2>¿Qué coche es ese? Apunta y descúbrelo gratis.</h2>
-          <p>CarAI Vision identifica marca, modelo y generación al instante. Tásalo con una llave cuando quieras.</p>
-        </div>
-        <div class="cap" data-from="0.66" data-to="0.96">
-          <h2>Decide con datos, no con corazonadas.</h2>
-          <p>Histórico de valor y dossiers en PDF para cada coche que te importa.</p>
-        </div>
-      </div>
-      <div class="stage__progress" aria-hidden="true"><span id="stageBar"></span></div>
-    </div>
-  </section>
-
-  <!-- FUNCIONES (capturas reales de la app) -->
-  <section class="features" id="features">
-    <div class="feature">
-      <div class="feature__text">
-        <p class="feature__kicker">Mi Colección</p>
-        <h3>Toda tu colección, con su valor estimado.</h3>
-        <p>CarAI reúne cada coche en un portfolio que se actualiza con datos de
-          mercado. Ves el valor estimado total de tu garaje y el de cada modelo,
-          con su grado de interés y su evolución.</p>
-      </div>
-      <div class="feature__media">
-        <img class="screen" src="assets/screens/mi-coleccion.jpg" alt="Pantalla Mi Colección de CarAI: valor total de 456.000 € y fichas de cada coche con su variación" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="feature feature--reverse">
-      <div class="feature__text">
-        <p class="feature__kicker">Collector Intelligence</p>
-        <h3>Tres escenarios para cada decisión.</h3>
-        <p>Conservador, realista y optimista: CarAI proyecta valor futuro, beneficio
-          neto, ROI y rentabilidad anualizada — y cierra con su propia conclusión
-          para cada coche.</p>
-      </div>
-      <div class="feature__media">
-        <img class="screen" src="assets/screens/collector-intelligence.jpg" alt="Pantalla Collector Intelligence: escenarios conservador, realista y optimista con ROI y la conclusión de CarAI" loading="lazy" />
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="feature__text">
-        <p class="feature__kicker">Ownership Intelligence</p>
-        <h3>Cuánto cuesta de verdad cada coche.</h3>
-        <p>Coste anual y mensual con un desglose real: combustible, mantenimiento,
-          desgaste, seguro y contingencias. Para que el disfrute nunca traiga
-          sorpresas.</p>
-      </div>
-      <div class="feature__media">
-        <img class="screen" src="assets/screens/ownership-intelligence.jpg" alt="Pantalla Ownership Intelligence: coste anual de 26.000 € con desglose por partidas" loading="lazy" />
-      </div>
-    </div>
-  </section>
-
-  <!-- REJILLA DE CARACTERÍSTICAS -->
-  <section class="grid-feats" aria-label="Todo lo que hace CarAI">
-    <div class="grid-feats__head">
-      <h2>Todo tu coleccionismo, en una app.</h2>
-      <p>Desde la primera valoración hasta el informe que cierra la operación.</p>
-    </div>
-    <ul class="cards">
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg>
-        </span>
-        <h3>Portfolio ilimitado</h3>
-        <p>Reúne todos tus coches y ve el valor total de tu colección de un vistazo.</p>
-      </li>
-      <li class="card card--vision">
-        <span class="card__tag">Freemium</span>
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M4 12h16"/></svg>
-        </span>
-        <h3>CarAI Vision</h3>
-        <p>Identifica cualquier coche gratis: marca, modelo y generación. Tásalo cuando quieras con una llave.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4M9 13h6M9 17h6"/></svg>
-        </span>
-        <h3>Dossiers en PDF</h3>
-        <p>Genera informes profesionales de cada coche, listos para compartir o vender.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-        </span>
-        <h3>Inteligencia de mercado</h3>
-        <p>Tendencias, comparables y datos completos para entender cada valoración.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-9"/><path d="M21 6v5h-5"/></svg>
-        </span>
-        <h3>Histórico de valor</h3>
-        <p>Sigue la evolución de tu colección en el tiempo, con informes detallados.</p>
-      </li>
-      <li class="card">
-        <span class="card__ic" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M12 8l1.6 2.4L16 12l-2.4 1.6L12 16l-1.6-2.4L8 12l2.4-1.6z"/></svg>
-        </span>
-        <h3>Descubre</h3>
-        <p>Cada día, un coche distinto: su historia y por qué dejó huella en el mundo del motor.</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- CARAI VISION — sección paso a paso -->
-  <section class="vision" id="vision" aria-label="Cómo funciona CarAI Vision">
-    <div class="vision__head">
-      <p class="feature__kicker">CarAI Vision · Freemium</p>
-      <h2>Escanea cualquier coche. <span class="grad">Tásalo al instante.</span></h2>
-      <p>Apunta la cámara a un coche que veas por la calle y CarAI Vision lo
-        identifica y lo valora en segundos. Así funciona, paso a paso.</p>
-    </div>
-    <ol class="vsteps">
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">01</span>
-          <img class="screen" src="assets/screens/vision-1.jpg" alt="CarAI Vision: pantalla de escaneo capturando las vistas frontal, trasera y lateral del coche" loading="lazy" />
-        </div>
-        <h3>Escanea</h3>
-        <p>Haz 3-5 fotos del coche desde distintos ángulos; la app te guía toma a toma.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">02</span>
-          <img class="screen" src="assets/screens/vision-2.jpg" alt="CarAI Vision analizando: detectando la silueta del vehículo" loading="lazy" />
-        </div>
-        <h3>Analiza</h3>
-        <p>La IA detecta la silueta, las ópticas y las líneas de la carrocería.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">03</span>
-          <img class="screen" src="assets/screens/vision-3.jpg" alt="CarAI Vision al 88%: cruzando coincidencias e identificando la generación" loading="lazy" />
-        </div>
-        <h3>Reconoce</h3>
-        <p>Cruza miles de coincidencias para acertar la generación exacta.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">04</span>
-          <img class="screen" src="assets/screens/vision-4.jpg" alt="CarAI Vision: vehículo detectado, Porsche 911 (993) Carrera con 98% de confianza" loading="lazy" />
-        </div>
-        <h3>Identifica</h3>
-        <p>Porsche 911 (993) Carrera con un 98% de confianza. Ajusta el año si lo sabes.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">05</span>
-          <img class="screen" src="assets/screens/vision-5.jpg" alt="CarAI Vision generando el análisis profesional de mercado" loading="lazy" />
-        </div>
-        <h3>Analiza el mercado</h3>
-        <p>Genera un análisis profesional con datos reales de mercado.</p>
-      </li>
-      <li class="vstep">
-        <div class="vstep__media">
-          <span class="vstep__n">06</span>
-          <img class="screen" src="assets/screens/vision-6.jpg" alt="CarAI Vision: resultado con valor estimado de 70.000 €, rango, fiabilidad y potencial coleccionable" loading="lazy" />
-        </div>
-        <h3>Tasa</h3>
-        <p>Valor estimado, rango, fiabilidad y potencial coleccionable. En segundos.</p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- GARAGE CARD + DOSSIER -->
-  <section class="showcase" aria-label="Garage Card y Dossier analítico">
-    <div class="showcase__item">
-      <div class="showcase__media">
-        <img class="screen" src="assets/screens/garage-card.jpg" alt="Garage Card de CarAI: tarjeta del coleccionista con su puntuación y sus coches" loading="lazy" />
-      </div>
-      <div class="showcase__text">
-        <p class="feature__kicker">Garage Card</p>
-        <h3>Comparte tu garaje.</h3>
-        <p>Una tarjeta lista para compartir con tu perfil de coleccionista, tu
-          puntuación y los coches de tu colección.</p>
-      </div>
-    </div>
-    <div class="showcase__item">
-      <div class="showcase__media">
-        <img class="doc" src="assets/screens/dossier-preview.jpg" alt="Portada del dossier analítico en PDF del Mercedes-Benz SLS AMG 2011, valoración 205.000 €" loading="lazy" />
-      </div>
-      <div class="showcase__text">
-        <p class="feature__kicker">Dossier analítico</p>
-        <h3>Un informe profesional en PDF.</h3>
-        <p>Valoración, escenarios e historia completa de cada coche, listos para
-          vender, asegurar o documentar tu colección.</p>
-        <a class="btn btn--ghost" href="assets/dossier-carai-ejemplo.pdf" target="_blank" rel="noopener">Ver dossier de ejemplo (PDF) ↓</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRECIOS -->
-  <section class="pricing" id="precios">
-    <div class="pricing__head">
-      <p class="feature__kicker">Precios</p>
-      <h2>Tu primera tasación completa, gratis.</h2>
-      <p class="pricing__sub">Paga solo cuando lo necesites. O hazte Collector y conduce sin límites.</p>
-    </div>
-
-    <div class="plans">
-      <!-- Gratis -->
-      <article class="plan">
-        <h3 class="plan__name">Gratis</h3>
-        <p class="plan__price"><strong>0 €</strong></p>
-        <p class="plan__desc">Para descubrir CarAI de verdad.</p>
-        <a href="#descargar" class="btn btn--ghost plan__cta">Descargar gratis</a>
-        <ul class="plan__list">
-          <li><strong>1 análisis completo</strong> gratis, de por vida</li>
-          <li>CarAI Vision · identificación gratis hasta 10 escaneos/día</li>
-          <li>1 análisis censurado cada 90 días</li>
-          <li>Guarda tu coche tasado en el garaje</li>
-          <li>PDF con marca de agua «MUESTRA»</li>
-        </ul>
-      </article>
-
-      <!-- Llaves (destacado) -->
-      <article class="plan plan--featured">
-        <span class="plan__badge">Más popular</span>
-        <h3 class="plan__name">Llaves 🔑</h3>
-        <div class="plan__keys">
-          <div class="plan__key-row">
-            <span class="plan__key-price">4,99 €</span>
-            <span class="plan__key-label">· 1 llave</span>
-          </div>
-          <div class="plan__key-row plan__key-row--deal">
-            <span class="plan__key-price">9,99 €</span>
-            <span class="plan__key-label">· 3 llaves &nbsp;<em>−33%</em></span>
-          </div>
-        </div>
-        <p class="plan__desc">Sin suscripción. Cada llave abre un análisis completo.</p>
-        <a href="#descargar" class="btn btn--primary plan__cta">Conseguir llaves</a>
-        <ul class="plan__list">
-          <li>Análisis completo con PDF sin marca de agua</li>
-          <li>Precio justo + comparables reales de portales</li>
-          <li>Argumentos de negociación personalizados</li>
-          <li>Gráfico de evolución de valor</li>
-          <li>Las llaves no caducan nunca</li>
-        </ul>
-        <p class="plan__legal">* Precio orientativo para España; el precio final lo fija tu tienda de aplicaciones.</p>
-      </article>
-
-      <!-- Collector -->
-      <article class="plan">
-        <h3 class="plan__name">CarAI Collector</h3>
-        <p class="plan__price">
-          <strong>14,99 €</strong>
-          <span class="plan__per">/mes</span>
+    <!-- HERO (H2 · split: texto a la izquierda, capturas reales a la derecha) -->
+    <section class="hero" id="top">
+      <div class="hero__copy">
+        <h1 class="hero__title">Sabe lo que vale.<br /> Antes de pagar.</h1>
+        <p class="hero__lede">
+          CarAI identifica cualquier coche con unas fotos y te dice su precio justo de
+          mercado, lo que te costará de verdad y cómo negociarlo. Para que nadie te la cuele.
         </p>
-        <p class="plan__save-note">o 119,99 €/año · ahorra 4 meses</p>
-        <p class="plan__desc">Para coleccionistas y profesionales. Todo, sin límites.</p>
-        <a href="#descargar" class="btn btn--ghost plan__cta">Empezar Collector</a>
-        <ul class="plan__list">
-          <li>Análisis ilimitados sin llaves</li>
-          <li>CarAI Vision <strong>ilimitado</strong></li>
-          <li>Portfolio y colección sin límites</li>
-          <li>Inteligencia de mercado completa</li>
-          <li>Calculadora ROI</li>
-          <li>Dossiers PDF ilimitados sin marca de agua</li>
-        </ul>
-      </article>
-    </div>
+        <div class="hero__actions" id="descargar">
+          <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726">
+            <img src="assets/appstore-badge.png" width="162" height="54" alt="Descárgalo en el App Store" />
+          </a>
+          <a class="link-arrow" href="#como-funciona">Cómo funciona <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="hero__note">Gratis para empezar: tu primera tasación completa y hasta 10 identificaciones al día.</p>
+      </div>
 
-    <!-- FAQ -->
-    <div class="faq">
-      <h3 class="faq__title">Preguntas frecuentes</h3>
-      <dl class="faq__list">
-        <div class="faq__item">
-          <dt>¿Qué es una llave?</dt>
-          <dd>Una llave desbloquea un análisis completo: precio justo exacto, comparables reales de portales, argumentos de negociación personalizados, gráfico de evolución histórica y dossier PDF sin marca de agua.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>¿Las llaves caducan?</dt>
-          <dd>No. Las llaves son tuyas para siempre. Úsalas cuando las necesites, sin fecha de expiración.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>¿Qué incluye el análisis completo?</dt>
-          <dd>Precio justo exacto con rango de mercado, comparables reales de portales de compraventa, argumentos de negociación adaptados a ese coche, gráfico de evolución histórica de valor y dossier PDF profesional.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>¿Qué es el análisis censurado?</dt>
-          <dd>El análisis se ejecuta de verdad, pero los datos aparecen borrosos. Ves que tu respuesta existe y que está a una sola llave de distancia. Se recarga uno nuevo cada 90 días.</dd>
-        </div>
-        <div class="faq__item">
-          <dt>¿Hay regalos al registrarse?</dt>
-          <dd>Sí. Al crear tu cuenta recibes una tasación de regalo (precio justo del coche, sin el informe completo). Y cada año, en tu cumpleaños 🎂, una llave gratis.</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
+      <div class="hero__visual">
+        <figure class="screen screen--back">
+          <picture>
+            <source srcset="assets/screens/vision-4.webp" type="image/webp" />
+            <img src="assets/screens/vision-4.jpg" width="900" height="1951" alt="CarAI Vision ha detectado un Porsche 911 (993) Carrera con un 98 % de coincidencia" fetchpriority="high" />
+          </picture>
+        </figure>
+        <figure class="screen screen--front">
+          <picture>
+            <source srcset="assets/screens/vision-6.webp" type="image/webp" />
+            <img src="assets/screens/vision-6.jpg" width="900" height="1951" alt="Resultado de CarAI: valor de mercado estimado de 70.000 €, rango entre 64.000 € y 76.000 €, fiabilidad alta" fetchpriority="high" />
+          </picture>
+        </figure>
+        <p class="hero__chip" aria-hidden="true">
+          <span class="hero__chip-label">Rango de mercado</span>
+          <span class="hero__chip-value">64.000 – 76.000 €</span>
+        </p>
+      </div>
+    </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta">
-    <h2>Tu colección merece saber cuánto vale.</h2>
-    <p>Descarga CarAI y obtén tu primera tasación completa gratis.</p>
-    <div class="stores stores--center">
-      <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726" aria-label="Descárgalo en el App Store">
-        <img src="assets/appstore-badge.png" alt="Descárgalo en el App Store" />
-      </a>
-    </div>
-    <p class="cta__soon">Android muy pronto.</p>
-  </section>
+    <!-- Datos verificables, sin métricas inventadas -->
+    <ul class="facts" aria-label="Datos de la app">
+      <li><strong>App Store</strong> iPhone · iOS 15 o superior</li>
+      <li><strong>4 idiomas</strong> Español, English, Français, Deutsch</li>
+      <li><strong>Sin suscripción obligatoria</strong> Paga solo el análisis que necesites</li>
+      <li><strong>Datos de mercado</strong> Estimaciones con muestras reales</li>
+    </ul>
 
+    <!-- ANIMACIÓN POR SCROLL — se carga solo al acercarse; avanza al bajar y retrocede al subir -->
+    <section class="stage" id="story" aria-label="Animación de CarAI controlada por scroll" data-stage>
+      <span class="anchor" id="vision"></span>
+      <div class="stage__pin">
+        <div class="stage__canvas" data-stage-mount>
+          <img class="stage__poster" src="assets/stage-poster.webp" width="1280" height="720" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="stage__overlay">
+          <div class="cap" data-from="0.02" data-to="0.32">
+            <h2>Cualquier coche.<br /> Su precio real.</h2>
+            <p>Del compacto del concesionario al clásico que ves por la calle.</p>
+          </div>
+          <div class="cap" data-from="0.36" data-to="0.64">
+            <h2>Apunta, escanea, sabe.</h2>
+            <p>CarAI Vision reconoce marca, modelo y generación en segundos. Gratis.</p>
+          </div>
+          <div class="cap" data-from="0.68" data-to="0.97">
+            <h2>Decide con datos, no con corazonadas.</h2>
+            <p>Precio justo, comparables y coste real antes de firmar nada.</p>
+          </div>
+        </div>
+        <div class="stage__progress" aria-hidden="true"><span data-stage-bar></span></div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA (F2 · texto fijo + capturas que pasan) -->
+    <section class="journey" id="como-funciona" aria-labelledby="journey-title">
+      <span class="anchor" id="features"></span>
+      <header class="section-head">
+        <h2 id="journey-title">De la foto al trato,<br /> en cuatro preguntas.</h2>
+        <p>Las mismas que te haces delante de un coche de segunda mano. CarAI responde cada una con datos.</p>
+      </header>
+
+      <ol class="journey__steps">
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">01</span>
+            <h3>¿Qué coche es, exactamente?</h3>
+            <p>Haz entre 3 y 5 fotos. CarAI Vision identifica marca, modelo y generación, y te deja
+              afinar el año si lo conoces. Gratis, hasta 10 escaneos al día.</p>
+          </div>
+          <figure class="screen step__screen">
+            <picture>
+              <source srcset="assets/screens/vision-1.webp" type="image/webp" />
+              <img src="assets/screens/vision-1.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="CarAI Vision guiando la captura: vistas frontal, trasera y lateral del coche" />
+            </picture>
+          </figure>
+        </li>
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">02</span>
+            <h3>¿Cuánto vale de verdad?</h3>
+            <p>Valor de mercado estimado, con su rango mínimo y máximo, la fiabilidad del cálculo y
+              las muestras en las que se basa. Si te piden más, lo sabrás antes de hablar.</p>
+          </div>
+          <figure class="screen step__screen">
+            <picture>
+              <source srcset="assets/screens/vision-6.webp" type="image/webp" />
+              <img src="assets/screens/vision-6.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Valor de mercado estimado de 70.000 € con rango de 64.000 € a 76.000 €" />
+            </picture>
+          </figure>
+        </li>
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">03</span>
+            <h3>¿Cuánto me costará tenerlo?</h3>
+            <p>Combustible, mantenimiento, desgaste, seguro e imprevistos. El coste anual y mensual,
+              desglosado, antes de comprometerte a nada.</p>
+          </div>
+          <figure class="screen step__screen">
+            <picture>
+              <source srcset="assets/screens/ownership-intelligence.webp" type="image/webp" />
+              <img src="assets/screens/ownership-intelligence.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Coste de propiedad: 26.000 € al año, 2.167 € al mes, con desglose por partidas" />
+            </picture>
+          </figure>
+        </li>
+        <li class="step">
+          <div class="step__copy">
+            <span class="step__n">04</span>
+            <h3>¿Cómo lo negocio?</h3>
+            <p>El análisis completo añade comparables reales de portales, argumentos de negociación
+              para ese coche en concreto y un dossier en PDF listo para enseñar.</p>
+            <a class="link-arrow" href="assets/dossier-carai-ejemplo.pdf" target="_blank" rel="noopener">Ver un dossier de ejemplo (PDF) <span aria-hidden="true">↗</span></a>
+          </div>
+          <figure class="doc step__screen">
+            <picture>
+              <source srcset="assets/screens/dossier-preview.webp" type="image/webp" />
+              <img src="assets/screens/dossier-preview.jpg" width="820" height="1159" loading="lazy" decoding="async" alt="Portada del dossier en PDF de un Mercedes-Benz SLS AMG de 2011, valorado en 205.000 €" />
+            </picture>
+          </figure>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PRÓXIMAMENTE — en desarrollo, todavía no publicado -->
+    <section class="soon" id="proximamente" aria-labelledby="soon-title">
+      <header class="section-head section-head--row">
+        <h2 id="soon-title">Lo próximo en CarAI.</h2>
+        <p>Ya lo estamos construyendo. Llegará con una actualización gratuita.</p>
+      </header>
+      <ul class="soon__list">
+        <li>
+          <h3>Pega el enlace de un anuncio</h3>
+          <p>Te diremos si el precio es bueno, justo o caro, sin rellenar nada.</p>
+          <span class="tag">Próximamente</span>
+        </li>
+        <li>
+          <h3>Historial y kilómetros</h3>
+          <p>Sube los documentos del coche y detecta kilometrajes manipulados.</p>
+          <span class="tag">Próximamente</span>
+        </li>
+        <li>
+          <h3>Invita y gana análisis</h3>
+          <p>Comparte CarAI con tus amigos y consigue análisis completos gratis.</p>
+          <span class="tag">Próximamente</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- PARA ENTUSIASTAS — las funciones de coleccionista, ahora como techo avanzado -->
+    <section class="enthusiasts" id="entusiastas" aria-labelledby="enth-title">
+      <header class="section-head">
+        <h2 id="enth-title">Y si los coches son lo tuyo.</h2>
+        <p>Para quien tiene más de uno, o sueña con tenerlo: tu garaje con su valor, escenarios de
+          futuro para cada coche y una tarjeta para compartirlo.</p>
+      </header>
+      <div class="gallery">
+        <figure class="gallery__item">
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/mi-coleccion.webp" type="image/webp" />
+              <img src="assets/screens/mi-coleccion.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Mi Colección: valor total del garaje y ficha de cada coche con su variación" />
+            </picture>
+          </div>
+          <figcaption><strong>Tu garaje, en cifras.</strong> El valor estimado de cada coche y del conjunto, siempre al día.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/collector-intelligence.webp" type="image/webp" />
+              <img src="assets/screens/collector-intelligence.jpg" width="900" height="1951" loading="lazy" decoding="async" alt="Collector Intelligence: escenarios conservador, realista y optimista con ROI" />
+            </picture>
+          </div>
+          <figcaption><strong>Tres escenarios.</strong> Conservador, realista y optimista, con ROI y rentabilidad anualizada.</figcaption>
+        </figure>
+        <figure class="gallery__item">
+          <div class="screen">
+            <picture>
+              <source srcset="assets/screens/garage-card.webp" type="image/webp" />
+              <img src="assets/screens/garage-card.jpg" width="900" height="1600" loading="lazy" decoding="async" alt="Garage Card: tarjeta de coleccionista con puntuación y lista de coches" />
+            </picture>
+          </div>
+          <figcaption><strong>Garage Card.</strong> Tu perfil de coleccionista, listo para compartir.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="pricing" id="precios" aria-labelledby="pricing-title">
+      <header class="section-head section-head--center">
+        <h2 id="pricing-title">Empieza gratis.<br /> Paga solo si lo necesitas.</h2>
+        <p>Sin permanencia. Las llaves no caducan nunca.</p>
+      </header>
+
+      <div class="plans">
+        <article class="plan">
+          <h3 class="plan__name">Gratis</h3>
+          <p class="plan__price"><span class="num">0 €</span></p>
+          <p class="plan__desc">Para descubrir CarAI de verdad.</p>
+          <ul class="plan__list">
+            <li><strong>1 análisis completo</strong> gratis, de por vida</li>
+            <li>CarAI Vision: hasta 10 identificaciones al día</li>
+            <li>1 análisis censurado cada 90 días</li>
+            <li>Guarda tu coche tasado en el garaje</li>
+            <li>PDF con marca de agua «MUESTRA»</li>
+          </ul>
+          <a class="btn btn--line plan__cta" href="https://apps.apple.com/us/app/carai/id6781012726">Descargar gratis</a>
+        </article>
+
+        <article class="plan plan--featured">
+          <p class="plan__flag">Sin suscripción</p>
+          <h3 class="plan__name">Llaves</h3>
+          <div class="plan__keys">
+            <p><span class="num">4,99 €</span> <span class="plan__unit">1 llave</span></p>
+            <p><span class="num num--lg">9,99 €</span> <span class="plan__unit">3 llaves</span> <span class="save">−33 %</span></p>
+          </div>
+          <p class="plan__desc">Cada llave abre un análisis completo.</p>
+          <ul class="plan__list">
+            <li>Análisis completo con PDF sin marca de agua</li>
+            <li>Precio justo y comparables reales de portales</li>
+            <li>Argumentos de negociación personalizados</li>
+            <li>Gráfico de evolución de valor</li>
+            <li>Las llaves no caducan nunca</li>
+          </ul>
+          <a class="btn btn--ink plan__cta" href="https://apps.apple.com/us/app/carai/id6781012726">Conseguir llaves</a>
+        </article>
+
+        <article class="plan">
+          <h3 class="plan__name">CarAI Collector</h3>
+          <p class="plan__price"><span class="num">14,99 €</span> <span class="plan__unit">/ mes</span></p>
+          <p class="plan__desc">o 119,99 € al año, ahorras 4 meses.</p>
+          <ul class="plan__list">
+            <li>Análisis ilimitados, sin llaves</li>
+            <li>CarAI Vision <strong>ilimitado</strong></li>
+            <li>Garaje y colección sin límites</li>
+            <li>Inteligencia de mercado completa</li>
+            <li>Calculadora de ROI</li>
+            <li>Dossiers PDF ilimitados sin marca de agua</li>
+          </ul>
+          <a class="btn btn--line plan__cta" href="https://apps.apple.com/us/app/carai/id6781012726">Empezar Collector</a>
+        </article>
+      </div>
+      <p class="pricing__legal">Precios orientativos para España; el precio final lo fija tu tienda de aplicaciones.</p>
+    </section>
+
+    <!-- FAQ (desplegables nativos) -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Preguntas frecuentes</h2>
+      <div class="faq__list">
+        <details>
+          <summary>¿Las valoraciones de CarAI son tasaciones oficiales?</summary>
+          <p>No. Son estimaciones basadas en datos de mercado disponibles, pensadas para que llegues a la compra o a la negociación con información. No sustituyen a una tasación profesional ni a una inspección mecánica.</p>
+        </details>
+        <details>
+          <summary>¿Qué es una llave?</summary>
+          <p>Una llave desbloquea un análisis completo: precio justo con rango de mercado, comparables reales de portales, argumentos de negociación personalizados, gráfico de evolución de valor y dossier PDF sin marca de agua.</p>
+        </details>
+        <details>
+          <summary>¿Las llaves caducan?</summary>
+          <p>No. Son tuyas para siempre. Úsalas cuando las necesites.</p>
+        </details>
+        <details>
+          <summary>¿Qué es el análisis censurado?</summary>
+          <p>El análisis se ejecuta de verdad, pero los datos aparecen borrosos: ves que tu respuesta existe y que está a una llave de distancia. Se recarga uno nuevo cada 90 días.</p>
+        </details>
+        <details>
+          <summary>¿Hay regalos al registrarse?</summary>
+          <p>Sí. Al crear tu cuenta recibes una tasación de regalo (el precio justo del coche, sin el informe completo). Y cada año, por tu cumpleaños, una llave gratis.</p>
+        </details>
+        <details>
+          <summary>¿Hay versión para Android?</summary>
+          <p>Todavía no. Por ahora CarAI está disponible en el App Store para iPhone. La versión de Android llegará pronto.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- PIE (Ft5 · frase de cierre) -->
   <footer class="foot">
-    <div class="foot__row">
-      <span class="foot__brand"><img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI</span>
-      <nav class="foot__links" aria-label="Enlaces legales">
-        <a href="#features">Funciones</a>
-        <a href="#precios">Precios</a>
+    <p class="foot__line">Que no te la cuelen.</p>
+    <div class="foot__cta">
+      <a class="store-badge" href="https://apps.apple.com/us/app/carai/id6781012726">
+        <img src="assets/appstore-badge.png" width="162" height="54" alt="Descárgalo en el App Store" loading="lazy" />
+      </a>
+      <span class="foot__soon">Android, muy pronto.</span>
+    </div>
+    <div class="foot__meta">
+      <a class="brand" href="#top" aria-label="CarAI — volver arriba">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="28" height="28" alt="" loading="lazy" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="foot__links" aria-label="Enlaces del pie">
         <a href="soporte.html">Soporte</a>
         <a href="terminos.html">Términos</a>
         <a href="privacidad.html">Privacidad</a>
+        <a href="mailto:support@joincarai.com">support@joincarai.com</a>
       </nav>
     </div>
-    <p class="foot__disclaimer">Las valoraciones de CarAI son estimaciones basadas en datos de mercado disponibles, no tasaciones profesionales.</p>
-    <span class="foot__copy">© 2026 CarAI · Para quienes coleccionan con cabeza. · Soporte: <a href="mailto:support@joincarai.com">support@joincarai.com</a></span>
+    <p class="foot__fine">Las valoraciones de CarAI son estimaciones basadas en datos de mercado disponibles, no tasaciones profesionales. © 2026 CarAI.</p>
   </footer>
-
-  <script type="module" src="main.js"></script>
 </body>
 </html>

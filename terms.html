@@ -5,32 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index,follow" />
   <meta name="description" content="CarAI Terms and Conditions of use — the app for car collectors." />
-  <meta name="theme-color" content="#05070e" />
+  <meta name="theme-color" content="#060b18" />
   <title>Terms and Conditions — CarAI</title>
-  <link rel="icon" href="assets/logo.png" />
+  <link rel="icon" href="assets/brand/logo-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/brand/logo-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="tokens.css" />
   <link rel="stylesheet" href="style.css" />
+  <script type="module" src="main.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
 
-  <header class="nav">
-    <a class="nav__brand" href="index-en.html" aria-label="CarAI — home">
-      <img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI
-    </a>
-    <nav class="nav__links" aria-label="Main">
-      <a href="index-en.html#features">Features</a>
-      <a href="index-en.html#pricing">Pricing</a>
-      <a href="index-en.html#download" class="nav__cta">Download</a>
-      <a class="lang-switch" href="terminos.html" aria-label="Cambiar a español">ES</a>
-    </nav>
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <a class="brand" href="index-en.html" aria-label="CarAI — home">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="32" height="32" alt="" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="index-en.html#how-it-works">How it works</a>
+        <a href="index-en.html#pricing">Pricing</a>
+        <a href="index-en.html#faq">FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="nav__lang" href="terminos.html" hreflang="es" lang="es" data-lang-switch="es" aria-label="Cambiar a español">ES</a>
+        <a class="btn btn--ink btn--sm" href="https://apps.apple.com/us/app/carai/id6781012726">Download</a>
+      </div>
+    </div>
   </header>
 
   <main class="legal" id="content">
     <div class="legal__header">
-      <p class="feature__kicker">Legal</p>
+      <p class="legal__kicker">Legal</p>
       <h1>Terms and Conditions</h1>
       <p class="legal__updated">Last updated: 11 June 2026</p>
     </div>
@@ -144,18 +153,20 @@
     <p class="legal__back"><a href="index-en.html">← Back to home</a></p>
   </main>
 
-  <footer class="foot">
-    <div class="foot__row">
-      <span class="foot__brand"><img class="nav__logo" src="assets/logo.png" alt="" aria-hidden="true" /> CarAI</span>
-      <nav class="foot__links" aria-label="Legal links">
-        <a href="index-en.html#features">Features</a>
-        <a href="index-en.html#pricing">Pricing</a>
+  <footer class="foot foot--compact">
+    <div class="foot__meta">
+      <a class="brand" href="index-en.html" aria-label="CarAI — home">
+        <img class="brand__mark" src="assets/brand/logo-64.png" width="28" height="28" alt="" loading="lazy" />
+        <span class="brand__name">CarAI</span>
+      </a>
+      <nav class="foot__links" aria-label="Footer links">
         <a href="support.html">Support</a>
         <a href="terms.html" aria-current="page">Terms</a>
         <a href="privacy.html">Privacy</a>
+        <a href="mailto:support@joincarai.com">support@joincarai.com</a>
       </nav>
     </div>
-    <span class="foot__copy">© 2026 CarAI · For those who collect with their head.</span>
+    <p class="foot__fine">CarAI valuations are estimates based on available market data, not professional appraisals. © 2026 CarAI.</p>
   </footer>
 </body>
 </html>
